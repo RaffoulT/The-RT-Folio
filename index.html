@@ -19,7 +19,6 @@
 
   <style>
     :root {
-      /* Dark Mode (Default) */
       --paper: #141312;
       --paper-card: #1C1B18;
       --paper-dark: #0D0C0B;
@@ -33,22 +32,6 @@
       --line: #2C2924;
       --line-gold: rgba(197, 168, 128, 0.25);
       --radius: 3px;
-    }
-
-    /* Light Mode */
-    body.light-mode {
-      --paper: #FAF7F4;
-      --paper-card: #FFFFFF;
-      --paper-dark: #F0EBE6;
-      --paper-elevated: #FFFFFF;
-      --ink: #1A1816;
-      --ink-muted: #6B6558;
-      --stamp: #8B6E3F;
-      --gold: #8B6E3F;
-      --gold-light: #A58854;
-      --teal: #B89535;
-      --line: #E0D8CC;
-      --line-gold: rgba(139, 110, 63, 0.15);
     }
 
     * {
@@ -198,18 +181,12 @@
 
 
     /* =====================================================
-       SOUND EFFECT TOGGLE & THEME TOGGLE
+       SOUND EFFECT TOGGLE
        ===================================================== */
 
-    .masthead-row > *:last-child {
-      display: flex;
-      gap: .5rem;
-      align-items: center;
-      justify-content: flex-end;
-    }
+    .sound-toggle {
+      justify-self: end;
 
-    .sound-toggle,
-    .theme-toggle {
       width: auto;
       min-width: 0;
 
@@ -241,23 +218,20 @@
       white-space: nowrap;
     }
 
-    .sound-toggle:hover,
-    .theme-toggle:hover {
+    .sound-toggle:hover {
       color: var(--gold);
       border-color: var(--gold);
       background: var(--paper-card);
     }
 
-    .sound-toggle.muted,
-    .theme-toggle.active {
+    .sound-toggle.muted {
       color: var(--gold);
       border-color: var(--gold);
     }
 
     @media (prefers-reduced-motion: no-preference) {
 
-      .sound-toggle,
-      .theme-toggle {
+      .sound-toggle {
         transition:
           color .2s ease,
           border-color .2s ease,
@@ -332,16 +306,6 @@
       transform: scale(1.02);
       filter: drop-shadow(0 0 50px rgba(197, 168, 128, 0.22));
       opacity: 1;
-    }
-
-    /* Light mode logo adjustments */
-    body.light-mode .hero-logo-img {
-      mix-blend-mode: multiply;
-      opacity: 0.88;
-    }
-
-    body.light-mode .hero-logo-img:hover {
-      opacity: 0.95;
     }
 
     .role {
@@ -1606,12 +1570,6 @@
 
       </button>
 
-      <button id="theme-toggle" class="theme-toggle mono" type="button" aria-label="Switch to light mode">
-
-        ☀️ LIGHT
-
-      </button>
-
     </div>
 
   </div>
@@ -2146,40 +2104,6 @@
        ===================================================== -->
 
   <script>
-
-    /* =====================================================
-       THEME TOGGLE
-       ===================================================== */
-
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-
-    // Check for saved theme preference or default to dark mode
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    
-    if (savedTheme === 'light') {
-      body.classList.add('light-mode');
-      themeToggle.classList.add('active');
-      themeToggle.innerHTML = '🌙 DARK';
-      themeToggle.setAttribute('aria-label', 'Switch to dark mode');
-    }
-
-    // Theme toggle functionality
-    themeToggle.addEventListener('click', () => {
-      const isLightMode = body.classList.toggle('light-mode');
-      themeToggle.classList.toggle('active');
-      
-      if (isLightMode) {
-        localStorage.setItem('theme', 'light');
-        themeToggle.innerHTML = '🌙 DARK';
-        themeToggle.setAttribute('aria-label', 'Switch to dark mode');
-      } else {
-        localStorage.setItem('theme', 'dark');
-        themeToggle.innerHTML = '☀️ LIGHT';
-        themeToggle.setAttribute('aria-label', 'Switch to light mode');
-      }
-    });
-
 
     /* =====================================================
        SCROLL REVEAL
