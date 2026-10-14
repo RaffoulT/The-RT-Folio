@@ -7,3 +7,6 @@ Thumbs.db
 
 # Data files that should be tracked
 !cards.json
+
+# Ignore duplicated mobile assets images (tracked in root /images)
+mobile/assets/images/
