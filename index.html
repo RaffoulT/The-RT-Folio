@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>RT.CAPTURED.ON.FILM</title>
+  <title>The RT Folio — Film Archive</title>
 
   <link rel="icon" type="image/png" href="images/favicon-mark.png">
   <link rel="apple-touch-icon" href="images/favicon-mark.png">
@@ -14,20 +14,24 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@500;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@500;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&family=Montserrat:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
 
   <style>
     :root {
-      --paper: #E9E1CB;
-      --paper-card: #F3EDDC;
-      --paper-dark: #D8CCA9;
-      --ink: #201C15;
-      --ink-muted: #6E6353;
-      --stamp: #AC3B2C;
-      --teal: #2B554F;
-      --line: #B7A97F;
-      --radius: 2px;
+      --paper: #141312;
+      --paper-card: #1C1B18;
+      --paper-dark: #0D0C0B;
+      --paper-elevated: #24221E;
+      --ink: #F4EFEB;
+      --ink-muted: #A39A8B;
+      --stamp: #C5A880;
+      --gold: #C5A880;
+      --gold-light: #DFC49F;
+      --teal: #D4AF37;
+      --line: #2C2924;
+      --line-gold: rgba(197, 168, 128, 0.25);
+      --radius: 3px;
     }
 
     * {
@@ -50,10 +54,10 @@
 
       background-image:
         radial-gradient(circle at 1px 1px,
-          rgba(32, 28, 21, 0.045) 1px,
+          rgba(197, 168, 128, 0.05) 1px,
           transparent 0);
 
-      background-size: 22px 22px;
+      background-size: 24px 24px;
 
       color: var(--ink);
 
@@ -71,12 +75,12 @@
     }
 
     ::selection {
-      background: var(--stamp);
-      color: var(--paper-card);
+      background: var(--gold);
+      color: #141312;
     }
 
     :focus-visible {
-      outline: 2px solid var(--stamp);
+      outline: 2px solid var(--gold);
       outline-offset: 3px;
     }
 
@@ -130,8 +134,10 @@
        ===================================================== */
 
     .masthead {
-      border-bottom: 2px solid var(--ink);
+      border-bottom: 1px solid var(--line);
       padding: .9rem 0;
+      background: rgba(20, 19, 18, 0.85);
+      backdrop-filter: blur(10px);
     }
 
     .masthead-row {
@@ -169,8 +175,8 @@
     }
 
     .masthead-nav a:hover {
-      color: var(--stamp);
-      border-color: var(--stamp);
+      color: var(--gold);
+      border-color: var(--gold);
     }
 
 
@@ -213,14 +219,14 @@
     }
 
     .sound-toggle:hover {
-      color: var(--stamp);
-      border-color: var(--stamp);
+      color: var(--gold);
+      border-color: var(--gold);
       background: var(--paper-card);
     }
 
     .sound-toggle.muted {
-      color: var(--stamp);
-      border-color: var(--stamp);
+      color: var(--gold);
+      border-color: var(--gold);
     }
 
     @media (prefers-reduced-motion: no-preference) {
@@ -255,7 +261,7 @@
 
       text-transform: uppercase;
 
-      color: var(--stamp);
+      color: var(--gold);
 
       margin-bottom: 1.6rem;
     }
@@ -267,7 +273,7 @@
       width: 26px;
       height: 1px;
 
-      background: var(--stamp);
+      background: var(--gold);
     }
 
     .hero-logo-container {
@@ -275,8 +281,8 @@
 
       margin: 0 auto 1.5rem;
 
-      max-width: 320px;
-      width: 80%;
+      max-width: 380px;
+      width: 85%;
     }
 
     .hero-logo-img {
@@ -285,21 +291,32 @@
 
       display: block;
 
-      mix-blend-mode: multiply;
+      border-radius: 8px;
+
+      filter: drop-shadow(0 0 35px rgba(197, 168, 128, 0.12));
+
+      transition: transform .35s ease, filter .35s ease;
+    }
+
+    .hero-logo-img:hover {
+      transform: scale(1.02);
+      filter: drop-shadow(0 0 50px rgba(197, 168, 128, 0.22));
     }
 
     .role {
-      margin-top: .5rem;
+      margin-top: .75rem;
 
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: 'Montserrat', sans-serif;
+
+      font-weight: 500;
 
       font-size: clamp(.85rem, 1.6vw, 1.05rem);
 
-      letter-spacing: .12em;
+      letter-spacing: .2em;
 
       text-transform: uppercase;
 
-      color: var(--teal);
+      color: var(--gold);
     }
 
     .tagline {
@@ -327,11 +344,11 @@
 
       font-size: .85rem;
 
-      letter-spacing: .06em;
+      letter-spacing: .08em;
 
       text-transform: uppercase;
 
-      padding: 1.2rem;
+      padding: 1.1rem 1.8rem;
 
       border-radius: var(--radius);
 
@@ -339,7 +356,7 @@
 
       display: inline-block;
 
-      border: 2px solid var(--ink);
+      border: 1px solid var(--line-gold);
 
       cursor: pointer;
 
@@ -347,18 +364,28 @@
     }
 
     .btn-solid {
-      background: var(--ink);
-      color: var(--paper-card);
+      background: var(--gold);
+      color: #141312;
+      border-color: var(--gold);
+      font-weight: 600;
     }
 
     .btn-solid:hover {
-      background: var(--stamp);
-      border-color: var(--stamp);
+      background: var(--gold-light);
+      border-color: var(--gold-light);
+      color: #141312;
+      box-shadow: 0 4px 20px rgba(197, 168, 128, 0.3);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--line-gold);
+      color: var(--ink);
     }
 
     .btn-outline:hover {
-      background: var(--ink);
-      color: var(--paper-card);
+      background: rgba(197, 168, 128, 0.1);
+      border-color: var(--gold);
+      color: var(--gold);
     }
 
     @media (prefers-reduced-motion: no-preference) {
@@ -367,7 +394,8 @@
         transition:
           background .25s ease,
           border-color .25s ease,
-          color .25s ease;
+          color .25s ease,
+          box-shadow .25s ease;
       }
 
     }
@@ -386,7 +414,7 @@
       width: 88px;
       height: 88px;
 
-      border: 1.5px dashed var(--stamp);
+      border: 1.5px dashed var(--gold);
 
       border-radius: 50%;
 
@@ -395,7 +423,7 @@
       align-items: center;
       justify-content: center;
 
-      color: var(--stamp);
+      color: var(--gold);
 
       font-family: 'IBM Plex Mono', monospace;
 
@@ -437,10 +465,11 @@
 
       z-index: 20;
 
-      background: var(--paper);
+      background: rgba(20, 19, 18, 0.94);
+      backdrop-filter: blur(12px);
 
-      border-top: 2px solid var(--ink);
-      border-bottom: 2px solid var(--ink);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
     }
 
     .index-row {
@@ -478,20 +507,22 @@
     }
 
     .tab .count {
-      color: var(--stamp);
+      color: var(--gold);
       margin-left: .35rem;
     }
 
     .tab.active {
-      color: var(--ink);
+      color: var(--gold);
 
       background: var(--paper-card);
 
       font-weight: 600;
+
+      border-bottom: 2px solid var(--gold);
     }
 
     .tab:hover {
-      color: var(--ink);
+      color: var(--gold);
     }
 
 
@@ -521,7 +552,8 @@
 
     .tiny-camera-space:hover {
       transform: translateY(-2px);
-      border-color: var(--ink);
+      border-color: var(--gold);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
     }
 
     .tiny-camera-thumb {
@@ -530,11 +562,11 @@
 
       border-radius: 50%;
 
-      border: 1px solid var(--ink);
+      border: 1px solid var(--line-gold);
 
       overflow: hidden;
 
-      background: var(--ink);
+      background: #0E0D0C;
 
       flex-shrink: 0;
     }
@@ -563,7 +595,7 @@
 
       letter-spacing: .12em;
 
-      color: var(--stamp);
+      color: var(--gold);
 
       margin-bottom: .15rem;
     }
@@ -665,9 +697,10 @@
       transform: translateY(-6px) rotate(-.3deg);
 
       box-shadow:
-        0 14px 24px -14px rgba(32, 28, 21, .35);
+        0 16px 36px -12px rgba(0, 0, 0, .7),
+        0 0 24px -6px rgba(197, 168, 128, .2);
 
-      border-color: var(--ink);
+      border-color: var(--gold);
     }
 
     @media (prefers-reduced-motion: no-preference) {
@@ -715,9 +748,11 @@
 
       text-transform: uppercase;
 
-      border: 1.5px solid var(--stamp);
+      border: 1.5px solid var(--gold);
 
-      color: var(--stamp);
+      color: var(--gold);
+
+      background: rgba(197, 168, 128, 0.08);
 
       padding: .2rem .5rem;
 
@@ -762,13 +797,13 @@
 
       width: 100%;
 
-      border: 1px solid var(--ink);
+      border: 1px solid var(--line);
 
       margin-bottom: 1rem;
 
       overflow: hidden;
 
-      background: #1a1713;
+      background: #0E0D0C;
     }
 
     .frame {
@@ -798,11 +833,11 @@
 
       width: 12px;
 
-      background-color: var(--ink);
+      background-color: #0E0D0C;
 
       background-image:
         repeating-linear-gradient(to bottom,
-          var(--paper-card) 0 5px,
+          #221F1A 0 5px,
           transparent 5px 15px);
 
       background-position: center;
@@ -856,7 +891,7 @@
     .perf {
       position: relative;
 
-      border-top: 2px dashed var(--line);
+      border-top: 1px dashed var(--line);
 
       margin: 0 0 .9rem;
     }
@@ -939,11 +974,13 @@
 
       text-transform: uppercase;
 
-      letter-spacing: .06em;
+      letter-spacing: .08em;
 
       text-decoration: none;
 
-      border-bottom: 1px solid var(--ink);
+      color: var(--gold);
+
+      border-bottom: 1px solid var(--line-gold);
 
       align-self: flex-start;
 
@@ -953,9 +990,9 @@
     }
 
     .card-link:hover {
-      color: var(--stamp);
+      color: var(--gold-light);
 
-      border-color: var(--stamp);
+      border-color: var(--gold-light);
     }
 
 
@@ -966,9 +1003,9 @@
     .about {
       padding: 5rem 0;
 
-      border-top: 2px solid var(--ink);
+      border-top: 1px solid var(--line);
 
-      border-bottom: 2px solid var(--ink);
+      border-bottom: 1px solid var(--line);
 
       margin-top: 4rem;
     }
@@ -990,7 +1027,7 @@
 
       text-transform: uppercase;
 
-      color: var(--stamp);
+      color: var(--gold);
 
       margin-bottom: 1.3rem;
     }
@@ -1022,13 +1059,22 @@
 
       text-transform: uppercase;
 
-      border: 1px solid var(--line);
+      border: 1px solid var(--line-gold);
+
+      background: rgba(197, 168, 128, 0.03);
 
       padding: .4rem .7rem;
 
       border-radius: var(--radius);
 
       color: var(--ink-muted);
+
+      transition: border-color .2s ease, color .2s ease;
+    }
+
+    .tag:hover {
+      border-color: var(--gold);
+      color: var(--gold);
     }
 
 
@@ -1045,7 +1091,7 @@
 
       margin: 0 auto;
 
-      border: 1.5px solid var(--ink);
+      border: 1px solid var(--line-gold);
 
       border-radius: var(--radius);
 
@@ -1054,6 +1100,8 @@
       text-align: center;
 
       background: var(--paper-card);
+
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
     }
 
     .order-form h2 {
@@ -1118,7 +1166,7 @@
        ===================================================== */
 
     footer {
-      border-top: 2px solid var(--ink);
+      border-top: 1px solid var(--line);
 
       padding: 1.6rem 0 2.4rem;
 
@@ -1146,7 +1194,7 @@
 
       text-transform: uppercase;
 
-      color: var(--ink);
+      color: var(--gold);
 
       margin-top: 1rem;
     }
@@ -1403,11 +1451,7 @@
 
       .hero-logo-container {
         width: 90%;
-        max-width: 280px;
-      }
-
-      .hero-logo-img {
-        transform: translateX(6px);
+        max-width: 300px;
       }
 
       .grid {
@@ -1508,7 +1552,7 @@
 
         <a href="index.html" class="masthead-back-link">
 
-          ← Creative Practice
+          The RT Folio
 
         </a>
 
@@ -1545,12 +1589,12 @@
             a 36,36 0 1,1 -72,0
           " fill="none" />
 
-        <text font-size="7.5" fill="currentColor">
+        <text font-size="7.2" fill="currentColor">
 
           <textPath href="#circlePath" startOffset="0%" textLength="226" lengthAdjust="spacingAndGlyphs">
 
-            AVAILABLE FOR BOOKINGS •
-            AVAILABLE FOR BOOKINGS •
+            THE RT FOLIO • FILM ARCHIVE • 
+            THE RT FOLIO • FILM ARCHIVE • 
 
           </textPath>
 
@@ -1564,26 +1608,26 @@
     <div class="wrap hidden">
 
       <p class="hero-eyebrow mono">
-        Browse the collection
+        Film Archive — Vol. I
       </p>
 
 
       <div class="hero-logo-container">
 
-        <img src="images/001.png" alt="Raffoul Traboulsy Logo" class="hero-logo-img">
+        <img src="images/thertfolio-logo.jpg" alt="The RT Folio — Film Archive Logo" class="hero-logo-img">
 
       </div>
 
 
       <p class="role">
-        Photographer
+        Curated Photography
       </p>
 
 
       <p class="tagline">
 
-        A catalogue of series and sessions —
-        light, grain, and a few good frames.
+        A curated archive of series and sessions —
+        light, grain, and timeless frames on film.
 
       </p>
 
