@@ -13,15 +13,19 @@
         rel="stylesheet">
     <style>
         :root {
-            --paper: #E9E1CB;
-            --paper-card: #F3EDDC;
-            --paper-dark: #D8CCA9;
-            --ink: #201C15;
-            --ink-muted: #6E6353;
-            --stamp: #AC3B2C;
-            --teal: #2B554F;
-            --line: #B7A97F;
-            --radius: 2px;
+            --paper: #141312;
+            --paper-card: #1C1B18;
+            --paper-dark: #0D0C0B;
+            --paper-elevated: #24221E;
+            --ink: #F4EFEB;
+            --ink-muted: #A39A8B;
+            --stamp: #C5A880;
+            --gold: #C5A880;
+            --gold-light: #DFC49F;
+            --teal: #D4AF37;
+            --line: #2C2924;
+            --line-gold: rgba(197, 168, 128, 0.25);
+            --radius: 3px;
         }
 
         * {
@@ -32,12 +36,26 @@
 
         body {
             background: var(--paper);
-            background-image: radial-gradient(circle at 1px 1px, rgba(32, 28, 21, 0.045) 1px, transparent 0);
-            background-size: 22px 22px;
+            background-image: radial-gradient(circle at 1px 1px, rgba(197, 168, 128, 0.05) 1px, transparent 0);
+            background-size: 24px 24px;
             color: var(--ink);
             font-family: 'IBM Plex Sans', sans-serif;
             line-height: 1.55;
             min-height: 100vh;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        ::selection {
+            background: var(--gold);
+            color: #141312;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 3px;
         }
 
         .mono {
@@ -63,6 +81,8 @@
             height: auto;
             margin: 0 auto 1.5rem;
             display: block;
+            mix-blend-mode: lighten;
+            opacity: 0.92;
         }
 
         #loginView h1 {
@@ -80,10 +100,11 @@
 
         .login-card {
             background: var(--paper-card);
-            border: 1.5px solid var(--ink);
+            border: 1px solid var(--line);
             border-radius: var(--radius);
             padding: 2rem;
             text-align: left;
+            box-shadow: 0 16px 36px -12px rgba(0, 0, 0, .7);
         }
 
         label {
@@ -103,15 +124,16 @@
             font-family: 'IBM Plex Mono', monospace;
             font-size: .9rem;
             border: 1px solid var(--line);
-            background: #fff;
+            background: var(--paper-dark);
             color: var(--ink);
             border-radius: var(--radius);
             margin-bottom: 1.1rem;
         }
 
         input:focus {
-            outline: 2px solid var(--stamp);
+            outline: 2px solid var(--gold);
             outline-offset: 1px;
+            border-color: var(--gold);
         }
 
         .btn {
@@ -123,25 +145,30 @@
             border-radius: var(--radius);
             text-decoration: none;
             display: inline-block;
-            border: 2px solid var(--ink);
+            border: 1px solid var(--line-gold);
             cursor: pointer;
             background: none;
             color: var(--ink);
+            transition: background .2s ease, border-color .2s ease, color .2s ease;
         }
 
         .btn-solid {
-            background: var(--ink);
-            color: var(--paper-card);
+            background: var(--gold);
+            color: #141312;
+            border-color: var(--gold);
+            font-weight: 600;
         }
 
         .btn-solid:hover {
-            background: var(--stamp);
-            border-color: var(--stamp);
+            background: var(--gold-light);
+            border-color: var(--gold-light);
+            color: #141312;
         }
 
         .btn-outline:hover {
-            background: var(--ink);
-            color: var(--paper-card);
+            background: rgba(197, 168, 128, 0.1);
+            border-color: var(--gold);
+            color: var(--gold);
         }
 
         .btn-small {
@@ -150,7 +177,7 @@
         }
 
         .error {
-            color: var(--stamp);
+            color: #E06C75;
             font-family: 'IBM Plex Mono', monospace;
             font-size: .75rem;
             min-height: 1.2em;
@@ -171,7 +198,7 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 1rem;
-            border-bottom: 2px solid var(--ink);
+            border-bottom: 1px solid var(--line);
             padding-bottom: 1rem;
             margin-bottom: 1.6rem;
         }
@@ -184,7 +211,7 @@
         }
 
         .admin-top h1 span {
-            color: var(--stamp);
+            color: var(--gold);
         }
 
         .actions {
@@ -214,6 +241,7 @@
             font-family: 'Archivo Black', sans-serif;
             font-size: 1.6rem;
             display: block;
+            color: var(--gold);
         }
 
         .stat .lbl {
@@ -227,10 +255,11 @@
         /* ---------- Form ---------- */
         .panel {
             background: var(--paper-card);
-            border: 1.5px solid var(--ink);
+            border: 1px solid var(--line);
             border-radius: var(--radius);
             padding: 1.5rem;
             margin-bottom: 2rem;
+            box-shadow: 0 16px 36px -12px rgba(0, 0, 0, .5);
         }
 
         .panel h2 {
@@ -265,9 +294,17 @@
             font-family: 'IBM Plex Mono', monospace;
             font-size: .82rem;
             border: 1px solid var(--line);
-            background: #fff;
+            background: var(--paper-dark);
             color: var(--ink);
             border-radius: var(--radius);
+        }
+
+        .form-grid input:focus,
+        .form-grid select:focus,
+        .form-grid textarea:focus {
+            outline: 2px solid var(--gold);
+            outline-offset: 1px;
+            border-color: var(--gold);
         }
 
         .form-grid textarea {
@@ -299,9 +336,10 @@
             width: 64px;
             height: 48px;
             object-fit: cover;
-            border: 1px solid var(--ink);
-            background: #1a1713;
+            border: 1px solid var(--line);
+            background: #0A0A09;
             flex-shrink: 0;
+            border-radius: var(--radius);
         }
 
         .row .info {
@@ -326,8 +364,8 @@
             font-size: .6rem;
             letter-spacing: .1em;
             text-transform: uppercase;
-            border: 1px solid var(--stamp);
-            color: var(--stamp);
+            border: 1px solid var(--gold);
+            color: var(--gold);
             padding: .15rem .45rem;
             border-radius: var(--radius);
             margin-left: .5rem;
@@ -365,7 +403,7 @@
         }
 
         .msg.err {
-            color: var(--stamp);
+            color: #E06C75;
         }
 
         .note {
@@ -738,12 +776,12 @@
                         '<img class="thumb" src="' + escapeHtml(p.image) + '" alt="">' +
                         '<div class="info"><span class="t">Photo ' + (pi + 1) + '</span>' +
                         '<label style="margin:.4rem 0 .2rem;">Caption</label>' +
-                        '<input type="text" class="pg-caption-input" data-pi="' + pi + '" value="' + escapeHtml(p.caption || '') + '" placeholder="Caption for this photo…" style="width:100%;padding:.5rem .6rem;font-family:\'IBM Plex Mono\',monospace;font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:var(--radius);">' +
+                        '<input type="text" class="pg-caption-input" data-pi="' + pi + '" value="' + escapeHtml(p.caption || '') + '" placeholder="Caption for this photo…" style="width:100%;padding:.5rem .6rem;font-family:\'IBM Plex Mono\',monospace;font-size:.78rem;border:1px solid var(--line);background:var(--paper-dark);color:var(--ink);border-radius:var(--radius);">' +
                         '</div>' +
                         '<div class="btns">' +
                         '<button class="btn btn-outline btn-small" data-act="up" title="Move up">↑</button>' +
                         '<button class="btn btn-outline btn-small" data-act="down" title="Move down">↓</button>' +
-                        '<button class="btn btn-outline btn-small" data-act="del" title="Remove" style="border-color:var(--stamp);color:var(--stamp);">Remove</button>' +
+                        '<button class="btn btn-outline btn-small" data-act="del" title="Remove" style="border-color:#E06C75;color:#E06C75;">Remove</button>' +
                         '</div>';
                     row.querySelector('[data-act="up"]').addEventListener('click', function () { pgMovePhoto(pi, -1); });
                     row.querySelector('[data-act="down"]').addEventListener('click', function () { pgMovePhoto(pi, 1); });
@@ -874,7 +912,7 @@
                         '<button class="btn btn-outline btn-small" data-act="up" title="Move up">↑</button>' +
                         '<button class="btn btn-outline btn-small" data-act="down" title="Move down">↓</button>' +
                         '<button class="btn btn-outline btn-small" data-act="edit" title="Edit">Edit</button>' +
-                        '<button class="btn btn-outline btn-small" data-act="del" title="Delete" style="border-color:var(--stamp);color:var(--stamp);">Del</button>' +
+                        '<button class="btn btn-outline btn-small" data-act="del" title="Delete" style="border-color:#E06C75;color:#E06C75;">Del</button>' +
                         '</div>';
                     row.querySelector('[data-act="up"]').addEventListener('click', function () { moveCard(i, -1); });
                     row.querySelector('[data-act="down"]').addEventListener('click', function () { moveCard(i, 1); });

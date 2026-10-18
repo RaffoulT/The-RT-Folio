@@ -20,15 +20,19 @@
   <style>
 
     :root {
-      --paper: #E9E1CB;
-      --paper-card: #F3EDDC;
-      --paper-dark: #D8CCA9;
-      --ink: #201C15;
-      --ink-muted: #6E6353;
-      --stamp: #AC3B2C;
-      --teal: #2B554F;
-      --line: #B7A97F;
-      --radius: 2px;
+      --paper: #141312;
+      --paper-card: #1C1B18;
+      --paper-dark: #0D0C0B;
+      --paper-elevated: #24221E;
+      --ink: #F4EFEB;
+      --ink-muted: #A39A8B;
+      --stamp: #C5A880;
+      --gold: #C5A880;
+      --gold-light: #DFC49F;
+      --teal: #D4AF37;
+      --line: #2C2924;
+      --line-gold: rgba(197, 168, 128, 0.25);
+      --radius: 3px;
     }
 
     * {
@@ -52,17 +56,31 @@
       background-image:
         radial-gradient(
           circle at 1px 1px,
-          rgba(32, 28, 21, 0.045) 1px,
+          rgba(197, 168, 128, 0.05) 1px,
           transparent 0
         );
 
-      background-size: 22px 22px;
+      background-size: 24px 24px;
 
       color: var(--ink);
 
       font-family: 'IBM Plex Sans', sans-serif;
 
       line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    ::selection {
+      background: var(--gold);
+      color: #141312;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
     }
 
     .wrap {
@@ -81,9 +99,13 @@
        ===================================================== */
 
     .gallery-nav {
-      border-bottom: 2px solid var(--ink);
+      border-bottom: 1px solid var(--line);
 
       padding: 1rem 0;
+
+      background: rgba(20, 19, 18, 0.85);
+
+      backdrop-filter: blur(10px);
 
       font-family: 'IBM Plex Mono', monospace;
 
@@ -105,13 +127,21 @@
     .back-btn {
       text-decoration: none;
 
-      color: var(--stamp);
+      color: var(--gold);
 
       font-weight: 600;
+
+      transition: color .2s ease;
     }
 
     .back-btn:hover {
-      text-decoration: underline;
+      color: var(--gold-light);
+
+      text-decoration: none;
+    }
+
+    #navCode {
+      color: var(--ink-muted);
     }
 
 
@@ -154,7 +184,7 @@
     }
 
     .gallery-meta span strong {
-      color: var(--ink);
+      color: var(--gold);
     }
 
 
@@ -187,8 +217,17 @@
       padding: 1.5rem;
 
       box-shadow:
-        0 8px 20px -10px
-        rgba(0, 0, 0, .15);
+        0 16px 36px -12px rgba(0, 0, 0, .7),
+        0 0 24px -6px rgba(197, 168, 128, .1);
+
+      transition:
+        border-color .3s ease,
+        box-shadow .3s ease,
+        transform .3s ease;
+    }
+
+    .film-frame:hover {
+      border-color: var(--gold);
     }
 
 
@@ -203,9 +242,9 @@
 
       aspect-ratio: 4 / 3;
 
-      background: #1a1713;
+      background: #0A0A09;
 
-      border: 1px solid var(--ink);
+      border: 1px solid var(--line);
 
       overflow: hidden;
 
@@ -239,12 +278,12 @@
 
       z-index: 2;
 
-      background-color: var(--ink);
+      background-color: #0A0A09;
 
       background-image:
         repeating-linear-gradient(
           90deg,
-          var(--paper-card) 0 6px,
+          #1C1B18 0 6px,
           transparent 6px 18px
         );
     }
@@ -287,7 +326,7 @@
       background-image:
         repeating-linear-gradient(
           0deg,
-          var(--paper-card) 0 6px,
+          #1C1B18 0 6px,
           transparent 6px 18px
         );
     }
@@ -351,11 +390,11 @@
 
       padding: .7rem 1rem;
 
-      background: transparent;
+      background: rgba(197, 168, 128, 0.05);
 
       color: var(--ink);
 
-      border: 1px solid var(--line);
+      border: 1px solid var(--line-gold);
 
       border-radius: var(--radius);
 
@@ -377,11 +416,11 @@
     }
 
     .expand-btn:hover {
-      background: var(--ink);
+      background: var(--gold);
 
-      color: var(--paper-card);
+      color: #141312;
 
-      border-color: var(--ink);
+      border-color: var(--gold);
 
       transform: translateY(-1px);
     }
@@ -442,7 +481,9 @@
 
       z-index: 9999;
 
-      background: rgba(20, 17, 13, .96);
+      background: rgba(13, 12, 11, .96);
+
+      backdrop-filter: blur(16px);
 
       display: flex;
 
@@ -494,12 +535,11 @@
 
       object-fit: contain;
 
-      border: 1px solid
-        rgba(243, 237, 220, .25);
+      border: 1px solid var(--line-gold);
 
       box-shadow:
         0 25px 60px
-        rgba(0, 0, 0, .55);
+        rgba(0, 0, 0, .85);
     }
 
     .viewer-caption {
@@ -507,7 +547,7 @@
 
       max-width: 90%;
 
-      color: var(--paper-card);
+      color: var(--ink);
 
       font-family: 'IBM Plex Mono', monospace;
 
@@ -519,7 +559,7 @@
     }
 
     .viewer-frame {
-      color: var(--line);
+      color: var(--gold);
 
       font-family: 'IBM Plex Mono', monospace;
 
@@ -539,13 +579,15 @@
 
       right: 0;
 
-      border: 1px solid var(--line);
+      border: 1px solid var(--line-gold);
 
       background: var(--paper-card);
 
       color: var(--ink);
 
       padding: .55rem .8rem;
+
+      border-radius: var(--radius);
 
       font-family: 'IBM Plex Mono', monospace;
 
@@ -561,15 +603,16 @@
 
       transition:
         background .2s ease,
-        color .2s ease;
+        color .2s ease,
+        border-color .2s ease;
     }
 
     .viewer-close:hover {
-      background: var(--stamp);
+      background: var(--gold);
 
-      color: white;
+      color: #141312;
 
-      border-color: var(--stamp);
+      border-color: var(--gold);
     }
 
 
@@ -578,7 +621,7 @@
        ===================================================== */
 
     footer {
-      border-top: 2px solid var(--ink);
+      border-top: 1px solid var(--line);
 
       padding: 2.5rem 0;
 
