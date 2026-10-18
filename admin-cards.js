@@ -2,6 +2,22 @@
 (function () {
     'use strict';
     var KEY = 'rtCatalogCards';
+
+    /* =====================================================
+       LOGO MAPS
+       ===================================================== */
+    var FILM_LOGOS = {
+        'lomography': 'https://upload.wikimedia.org/wikipedia/commons/1/16/Lomography_Logo.svg',
+        'kodak':      'https://upload.wikimedia.org/wikipedia/commons/7/75/Kodak_logo_2006.svg',
+        'fujifilm':   'https://upload.wikimedia.org/wikipedia/commons/8/8d/Fujifilm_logo.svg'
+    };
+
+    var CAMERA_LOGOS = {
+        'canon': 'https://upload.wikimedia.org/wikipedia/commons/0/04/Canon_wordmark.svg',
+        'kodak': 'https://upload.wikimedia.org/wikipedia/commons/7/75/Kodak_logo_2006.svg',
+        'nikon': 'https://upload.wikimedia.org/wikipedia/commons/9/91/Nikon_Logo.svg'
+    };
+
     var DEFAULTS = [
         {
             code: 'ROLL — 00 (TEST)', category: 'series', title: 'Lomography 110',
@@ -10,6 +26,8 @@
             location: 'Beirut, LB', year: '2026', format: '110 Film',
             description: 'A test roll for the Lomography 110 format.',
             link: 'gallery.html?i=0', linkText: 'View gallery →',
+            filmBrand: 'lomography',
+            cameraBrand: 'kodak', cameraModel: 'Ektra',
             photos: []
         },
         {
@@ -18,6 +36,8 @@
             location: 'Beirut, LB', year: '2026', format: '35mm Film',
             description: 'Quiet Shelves Hiding a lot of treasures.',
             link: 'gallery.html?i=1', linkText: 'View gallery →',
+            filmBrand: 'kodak',
+            cameraBrand: 'canon', cameraModel: 'EOS 300',
             photos: [
                 { image: 'images/Untitled-1.jpg', alt: 'Just the exhausts poluting the air', caption: 'Pollution In An Artistic Way' },
                 { image: 'images/Untitled-2.jpg', alt: 'Hidden inside these books are secrets', caption: 'Knowledge hidden within the shelves' },
@@ -30,6 +50,8 @@
             location: 'Beirut, LB', year: '2026', format: '35mm Film',
             description: 'Fujifilm C400 roll.',
             link: 'gallery.html?i=2', linkText: 'View gallery →',
+            filmBrand: 'fujifilm',
+            cameraBrand: 'canon', cameraModel: 'EOS 300',
             photos: []
         }
     ];
@@ -53,12 +75,6 @@
             return clone(DEFAULTS);
         }
 
-        /*
-         * Keep cards created through the admin panel, but always ensure
-         * the built-in catalogue cards are present on the public page.
-         * This prevents an older localStorage copy containing only Gold 200
-         * from hiding the newer Lomography 110 card.
-         */
         DEFAULTS.forEach(function (defaultCard) {
             var existing = cards.find(function (card) {
                 return card && (
@@ -72,16 +88,16 @@
                 return;
             }
 
-            /*
-             * Roll 00 must always use the repository image.
-             * Older localStorage versions used an external wsrv.nl URL,
-             * which could fail to load. Replace that stale cover path.
-             */
             if (defaultCard.code === 'ROLL — 00 (TEST)') {
                 existing.image = defaultCard.image;
-                existing.alt = defaultCard.alt;
+                existing.alt   = defaultCard.alt;
             }
-            existing.link = defaultCard.link;
+
+            /* Always keep logo data up to date from DEFAULTS */
+            existing.filmBrand   = defaultCard.filmBrand;
+            existing.cameraBrand = defaultCard.cameraBrand;
+            existing.cameraModel = defaultCard.cameraModel;
+            existing.link        = defaultCard.link;
         });
 
         cards.sort(function(a, b) {
@@ -102,12 +118,37 @@
     function tpl(c) {
         var cat = (c.category || 'series') === 'session' ? 'Session' : 'Series';
         var img = c.image ? '<img src="' + esc(c.image) + '" alt="' + esc(c.alt || '') + '" class="frame">' : '';
-        var fn = c.frameNum ? '<span class="frame-num">' + esc(c.frameNum) + '</span>' : '';
+        var fn  = c.frameNum ? '<span class="frame-num">' + esc(c.frameNum) + '</span>' : '';
         var lnk = c.link ? '<a href="' + esc(c.link) + '" class="card-link">' + esc(c.linkText || 'View gallery →') + '</a>' : '';
+
+        /* Film brand logo */
+        var filmLogoHtml = '';
+        var filmKey = (c.filmBrand || '').toLowerCase();
+        if (FILM_LOGOS[filmKey]) {
+            filmLogoHtml =
+                '<div class="film-brand">' +
+                  '<img src="' + FILM_LOGOS[filmKey] + '" alt="' + esc(c.filmBrand) + '" class="film-brand-logo" loading="lazy">' +
+                '</div>';
+        }
+
+        /* Shot on: camera brand logo + model */
+        var shotOnHtml = '';
+        var camKey = (c.cameraBrand || '').toLowerCase();
+        if (CAMERA_LOGOS[camKey] && c.cameraModel) {
+            shotOnHtml =
+                '<div class="shot-on">' +
+                  '<span class="shot-on-label">Shot on —</span>' +
+                  '<img src="' + CAMERA_LOGOS[camKey] + '" alt="' + esc(c.cameraBrand) + '" class="shot-on-logo" loading="lazy">' +
+                  '<span class="shot-on-model">' + esc(c.cameraModel) + '</span>' +
+                '</div>';
+        }
+
         return '<article class="card hidden" data-category="' + esc(c.category || 'series') + '">' +
             '<div class="card-top"><span class="code">' + esc(c.code || '') + '</span><span class="stamp-badge">' + cat + '</span></div>' +
             '<div class="thumb">' + img + fn + '</div><div class="perf"></div>' +
             '<h3>' + esc(c.title || '') + '</h3>' +
+            filmLogoHtml +
+            shotOnHtml +
             '<div class="meta">' +
             '<span>Location — <span>' + esc(c.location || '') + '</span></span>' +
             '<span>Year — <span>' + esc(c.year || '') + '</span></span>' +
