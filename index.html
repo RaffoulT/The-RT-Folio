@@ -532,8 +532,75 @@
 
 
     /* =====================================================
-       TINY CAMERA BADGE
+       CAMERAS SECTION & BADGES
        ===================================================== */
+
+    .cameras-section {
+      padding: 3rem 0 1rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .camera-tabs-row {
+      display: inline-flex;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 1.75rem;
+      background: var(--paper-dark);
+    }
+
+    .camera-tab {
+      background: transparent;
+      border: none;
+      border-right: 1px solid var(--line);
+      padding: .45rem 1rem;
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--ink-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .camera-tab:last-child {
+      border-right: none;
+    }
+
+    .camera-tab .count {
+      color: var(--gold);
+      margin-left: .35rem;
+    }
+
+    .camera-tab.active {
+      color: var(--gold);
+      background: var(--paper-card);
+      font-weight: 600;
+      border-bottom: 2px solid var(--gold);
+    }
+
+    .camera-tab:hover {
+      color: var(--gold);
+    }
+
+    .cameras-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .cameras-empty {
+      display: none;
+      width: 100%;
+      padding: 2rem 1.5rem;
+      background: var(--paper-card);
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      color: var(--ink-muted);
+      font-size: .8rem;
+      text-align: center;
+    }
 
     .tiny-camera-space {
       display: inline-flex;
@@ -548,11 +615,13 @@
 
       border-radius: 40px;
 
-      padding: .3rem 1.2rem .3rem .3rem;
-
-      margin-bottom: 2rem;
+      padding: .35rem 1.3rem .35rem .35rem;
 
       text-decoration: none;
+
+      cursor: pointer;
+
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
     .tiny-camera-space:hover {
@@ -1703,6 +1772,88 @@
 
 
   <!-- =====================================================
+       CAMERAS
+       ===================================================== -->
+
+  <section id="cameras" class="cameras-section hidden">
+
+    <div class="wrap">
+
+      <div class="section-head">
+
+        <h2>
+          Cameras & Gear
+        </h2>
+
+        <span class="mono">
+          Loaded & In Rotation
+        </span>
+
+      </div>
+
+      <!-- CAMERA FILTER TABS -->
+      <div class="camera-tabs-row" role="tablist" aria-label="Filter cameras by type">
+
+        <button class="camera-tab active mono" data-camera-filter="all" type="button" role="tab" aria-selected="true">
+          All
+          <span class="count" id="count-camera-all">2</span>
+        </button>
+
+        <button class="camera-tab mono" data-camera-filter="film" type="button" role="tab" aria-selected="false">
+          Film
+          <span class="count" id="count-camera-film">2</span>
+        </button>
+
+        <button class="camera-tab mono" data-camera-filter="digital" type="button" role="tab" aria-selected="false">
+          Digital
+          <span class="count" id="count-camera-digital">0</span>
+        </button>
+
+      </div>
+
+      <!-- CAMERA BADGES / CARDS -->
+      <div class="cameras-grid" id="camerasGrid">
+
+        <a href="#" class="tiny-camera-space" data-camera-type="film" data-camera-image="images/ektra.avif"
+          data-camera-name="Kodak Ektra 100" data-camera-description="16mm wide Film Camera">
+
+          <div class="tiny-camera-thumb">
+            <img src="images/ektra.avif" alt="Kodak Ektra 100">
+          </div>
+
+          <div class="tiny-camera-details">
+            <span class="label">Previously Loaded · Film</span>
+            <span class="model">Kodak Ektra 100</span>
+          </div>
+
+        </a>
+
+        <a href="#" class="tiny-camera-space" data-camera-type="film" data-camera-image="images/cam.avif"
+          data-camera-name="Canon EOS 300" data-camera-description="35mm SLR Film Camera">
+
+          <div class="tiny-camera-thumb">
+            <img src="images/cam.avif" alt="Canon EOS 300">
+          </div>
+
+          <div class="tiny-camera-details">
+            <span class="label">Currently Loaded · Film</span>
+            <span class="model">Canon EOS 300</span>
+          </div>
+
+        </a>
+
+        <div class="cameras-empty mono" id="camerasEmpty">
+          No cameras currently catalogued under this category.
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
        CATALOGUE
        ===================================================== -->
 
@@ -1722,56 +1873,6 @@
         </span>
 
       </div>
-
-
-      <!-- CAMERA -->
-
-      <a href="#" class="tiny-camera-space hidden" data-camera-image="images/ektra.avif"
-        data-camera-name="Kodak Ektra 100" data-camera-description="16mm wide Film Camera">
-
-        <div class="tiny-camera-thumb">
-
-          <img src="images/ektra.avif" alt="Kodak Ektra 100">
-
-        </div>
-
-
-        <div class="tiny-camera-details">
-
-          <span class="label">
-            Previously Loaded
-          </span>
-
-          <span class="model">
-            Kodak Ektra 100
-          </span>
-
-        </div>
-
-      </a>
-      <a href="#" class="tiny-camera-space hidden" data-camera-image="images/cam.avif" data-camera-name="Canon EOS 300"
-        data-camera-description="35mm SLR Film Camera">
-
-        <div class="tiny-camera-thumb">
-
-          <img src="images/cam.avif" alt="Canon EOS 300">
-
-        </div>
-
-
-        <div class="tiny-camera-details">
-
-          <span class="label">
-            Currently Loaded
-          </span>
-
-          <span class="model">
-            Canon EOS 300
-          </span>
-
-        </div>
-
-      </a>
 
 
       <!-- CARDS -->
@@ -2167,7 +2268,7 @@
 
     const tabs =
       Array.from(
-        document.querySelectorAll('.tab')
+        document.querySelectorAll('.index-bar .tab')
       );
 
 
@@ -2266,6 +2367,71 @@
         }
       );
 
+    });
+
+
+    /* =====================================================
+       CAMERA TABS & FILTERING
+       ===================================================== */
+
+    const cameraTabs =
+      Array.from(
+        document.querySelectorAll('.camera-tab')
+      );
+
+    const cameraCards =
+      Array.from(
+        document.querySelectorAll('.tiny-camera-space')
+      );
+
+    function updateCameraCounts() {
+      const allCameraCount = document.getElementById('count-camera-all');
+      const filmCameraCount = document.getElementById('count-camera-film');
+      const digitalCameraCount = document.getElementById('count-camera-digital');
+
+      const filmTotal = cameraCards.filter(c => (c.dataset.cameraType || 'film').toLowerCase() === 'film').length;
+      const digitalTotal = cameraCards.filter(c => (c.dataset.cameraType || '').toLowerCase() === 'digital').length;
+
+      if (allCameraCount) allCameraCount.textContent = cameraCards.length;
+      if (filmCameraCount) filmCameraCount.textContent = filmTotal;
+      if (digitalCameraCount) digitalCameraCount.textContent = digitalTotal;
+    }
+
+    updateCameraCounts();
+
+    cameraTabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        cameraTabs.forEach((t) => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+
+        const filter = tab.dataset.cameraFilter;
+        let visibleCount = 0;
+
+        cameraCards.forEach((cam) => {
+          const camType = (cam.dataset.cameraType || 'film').toLowerCase();
+          const matches = filter === 'all' || camType === filter;
+
+          if (matches) {
+            cam.style.display = '';
+            visibleCount++;
+            requestAnimationFrame(() => {
+              cam.classList.add('show');
+            });
+          } else {
+            cam.style.display = 'none';
+          }
+        });
+
+        const camerasEmpty = document.getElementById('camerasEmpty');
+        if (camerasEmpty) {
+          camerasEmpty.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+      });
     });
 
 
