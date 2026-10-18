@@ -7,14 +7,14 @@
        LOGO MAPS
        ===================================================== */
     var FILM_LOGOS = {
-        'lomography': 'https://upload.wikimedia.org/wikipedia/commons/1/16/Lomography_Logo.svg',
-        'kodak':      'https://upload.wikimedia.org/wikipedia/commons/7/75/Kodak_logo_2006.svg',
-        'fujifilm':   'https://upload.wikimedia.org/wikipedia/commons/8/8d/Fujifilm_logo.svg'
+        'lomography': 'images/lomography.svg',
+        'kodak':      'images/kodak.svg',
+        'fujifilm':   'images/fujifilm.svg'
     };
 
     var CAMERA_LOGOS = {
-        'canon': 'https://upload.wikimedia.org/wikipedia/commons/0/04/Canon_wordmark.svg',
-        'kodak': 'https://upload.wikimedia.org/wikipedia/commons/7/75/Kodak_logo_2006.svg',
+        'canon': 'images/canon.svg',
+        'kodak': 'images/kodak.svg',
         'nikon': 'https://upload.wikimedia.org/wikipedia/commons/9/91/Nikon_Logo.svg'
     };
 
