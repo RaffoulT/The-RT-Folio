@@ -195,7 +195,10 @@
                 if (e.isIntersecting) { e.target.classList.add('show'); reveal.unobserve(e.target); }
             });
         }, { threshold: 0.12 });
-        els.forEach(function (c) { reveal.observe(c); });
+        els.forEach(function (c, index) {
+            c.style.setProperty('--card-reveal-delay', Math.min(index % 4, 3) * 75 + 'ms');
+            reveal.observe(c);
+        });
     }
 
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', render);

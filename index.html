@@ -31,6 +31,8 @@
       --line: #2C2924;
       --line-gold: rgba(197, 168, 128, 0.25);
       --radius: 3px;
+      --pointer-x: 50vw;
+      --pointer-y: 35vh;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -39,8 +41,12 @@
 
     body {
       background: var(--paper);
-      background-image: radial-gradient(circle at 1px 1px, rgba(197, 168, 128, 0.05) 1px, transparent 0);
-      background-size: 24px 24px;
+      background-image:
+        radial-gradient(circle 240px at var(--pointer-x) var(--pointer-y), rgba(197, 168, 128, 0.055), transparent 75%),
+        radial-gradient(circle at 1px 1px, rgba(197, 168, 128, 0.05) 1px, transparent 0);
+      background-size: auto, 24px 24px;
+      background-repeat: no-repeat, repeat;
+      background-attachment: fixed, scroll;
       color: var(--ink);
       font-family: 'IBM Plex Sans', sans-serif;
       line-height: 1.55;
@@ -302,13 +308,19 @@
       background: var(--paper-card); border: 1px solid var(--line); border-radius: var(--radius);
       padding: 1.2rem; position: relative; display: flex; flex-direction: column; min-width: 0;
     }
+    .card.hidden { transform: translateY(16px) scale(.99); }
+    .card.show { transform: translateY(0) scale(1); transition-delay: var(--card-reveal-delay, 0ms); }
     .card:hover {
       transform: translateY(-6px) rotate(-.3deg);
       box-shadow: 0 16px 36px -12px rgba(0,0,0,.7), 0 0 24px -6px rgba(197,168,128,.2);
       border-color: var(--gold);
+      transition-delay: 0s;
     }
     @media (prefers-reduced-motion: no-preference) {
       .card { transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .card.hidden, .card.show { transform: none; transition-delay: 0s; }
     }
 
 
@@ -776,6 +788,18 @@
     /* =====================================================
        SCROLL REVEAL
        ===================================================== */
+
+    if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+      let pointerFrame;
+      document.addEventListener('pointermove', (event) => {
+        if (!event.isPrimary) return;
+        cancelAnimationFrame(pointerFrame);
+        pointerFrame = requestAnimationFrame(() => {
+          document.documentElement.style.setProperty('--pointer-x', `${event.clientX}px`);
+          document.documentElement.style.setProperty('--pointer-y', `${event.clientY}px`);
+        });
+      }, { passive: true });
+    }
 
     const hiddenElements = document.querySelectorAll('.hidden');
 
