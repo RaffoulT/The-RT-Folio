@@ -33,98 +33,41 @@
       --radius: 3px;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    html,
-    body {
-      overflow-x: hidden;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    html, body { overflow-x: hidden; }
 
     body {
       background: var(--paper);
-
-      background-image:
-        radial-gradient(circle at 1px 1px,
-          rgba(197, 168, 128, 0.05) 1px,
-          transparent 0);
-
+      background-image: radial-gradient(circle at 1px 1px, rgba(197, 168, 128, 0.05) 1px, transparent 0);
       background-size: 24px 24px;
-
       color: var(--ink);
-
       font-family: 'IBM Plex Sans', sans-serif;
-
       line-height: 1.55;
     }
 
-    a {
-      color: inherit;
-    }
-
-    button {
-      font: inherit;
-    }
-
-    ::selection {
-      background: var(--gold);
-      color: #141312;
-    }
-
-    :focus-visible {
-      outline: 2px solid var(--gold);
-      outline-offset: 3px;
-    }
-
-    .mono {
-      font-family: 'IBM Plex Mono', monospace;
-    }
-
-    .wrap {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 0 1.75rem;
-    }
+    a { color: inherit; }
+    button { font: inherit; }
+    ::selection { background: var(--gold); color: #141312; }
+    :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+    .mono { font-family: 'IBM Plex Mono', monospace; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 1.75rem; }
 
 
     /* =====================================================
        SCROLL REVEAL
        ===================================================== */
 
-    .hidden {
-      opacity: 0;
-      transform: translateY(28px);
-    }
-
-    .show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .hidden { opacity: 0; transform: translateY(28px); }
+    .show { opacity: 1; transform: translateY(0); }
 
     @media (prefers-reduced-motion: no-preference) {
-
       .hidden {
-        transition:
-          opacity .7s cubic-bezier(.4, 0, .2, 1),
-          transform .7s cubic-bezier(.4, 0, .2, 1);
+        transition: opacity .7s cubic-bezier(.4,0,.2,1), transform .7s cubic-bezier(.4,0,.2,1);
       }
-
     }
-
     @media (prefers-reduced-motion: reduce) {
-
-      .hidden {
-        opacity: 1;
-        transform: none;
-      }
-
+      .hidden { opacity: 1; transform: none; }
     }
 
 
@@ -135,109 +78,60 @@
     .masthead {
       border-bottom: 1px solid var(--line);
       padding: .9rem 0;
-      background: rgba(20, 19, 18, 0.85);
+      background: rgba(20,19,18,0.85);
       backdrop-filter: blur(10px);
     }
-
     .masthead-row {
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
       gap: 1rem;
-
       font-size: .72rem;
       letter-spacing: .14em;
       text-transform: uppercase;
-
       color: var(--ink-muted);
     }
-
-    .masthead-row>*:first-child {
-      text-align: left;
-    }
-
-    .masthead-row>*:last-child {
-      text-align: right;
-    }
-
-    .masthead-nav {
-      text-align: center;
-    }
-
+    .masthead-row > *:first-child { text-align: left; }
+    .masthead-row > *:last-child { text-align: right; }
+    .masthead-nav { text-align: center; }
     .masthead-nav a {
       color: inherit;
       text-decoration: none;
-
       border-bottom: 1px solid transparent;
-
       cursor: pointer;
     }
-
-    .masthead-nav a:hover {
-      color: var(--gold);
-      border-color: var(--gold);
-    }
+    .masthead-nav a:hover { color: var(--gold); border-color: var(--gold); }
 
 
     /* =====================================================
-       SOUND EFFECT TOGGLE
+       SOUND TOGGLE
        ===================================================== */
 
     .sound-toggle {
       justify-self: end;
-
       width: auto;
       min-width: 0;
-
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: .3rem;
-
       font-family: 'IBM Plex Mono', monospace;
-
       font-size: .58rem;
       line-height: 1;
-
       letter-spacing: .04em;
-
       text-transform: uppercase;
-
       color: var(--ink-muted);
-
       background: none;
-
       border: 1px solid var(--line);
-
       padding: .35rem .45rem;
-
       cursor: pointer;
-
       border-radius: var(--radius);
-
       white-space: nowrap;
     }
-
-    .sound-toggle:hover {
-      color: var(--gold);
-      border-color: var(--gold);
-      background: var(--paper-card);
-    }
-
-    .sound-toggle.muted {
-      color: var(--gold);
-      border-color: var(--gold);
-    }
-
+    .sound-toggle:hover { color: var(--gold); border-color: var(--gold); background: var(--paper-card); }
+    .sound-toggle.muted { color: var(--gold); border-color: var(--gold); }
     @media (prefers-reduced-motion: no-preference) {
-
-      .sound-toggle {
-        transition:
-          color .2s ease,
-          border-color .2s ease,
-          background .2s ease;
-      }
-
+      .sound-toggle { transition: color .2s ease, border-color .2s ease, background .2s ease; }
     }
 
 
@@ -245,155 +139,55 @@
        HERO
        ===================================================== */
 
-    .hero {
-      padding: 4.5rem 0 3.5rem;
-      text-align: center;
-      position: relative;
-    }
-
+    .hero { padding: 4.5rem 0 3.5rem; text-align: center; position: relative; }
     .hero-eyebrow {
       display: inline-flex;
       align-items: center;
       gap: .5rem;
-
       font-size: .72rem;
       letter-spacing: .2em;
-
       text-transform: uppercase;
-
       color: var(--gold);
-
       margin-bottom: 1.6rem;
     }
-
-
-    .hero-logo-container {
-      display: block;
-
-      margin: 0 auto 1.5rem;
-
-      max-width: 380px;
-      width: 85%;
-    }
-
+    .hero-logo-container { display: block; margin: 0 auto 1.5rem; max-width: 380px; width: 85%; }
     .hero-logo-img {
-      width: 100%;
-      height: auto;
-
-      display: block;
-
-      border-radius: 8px;
-
-      /* Blend logo with background */
-      mix-blend-mode: lighten;
-      opacity: 0.92;
-
-      filter: drop-shadow(0 0 35px rgba(197, 168, 128, 0.12));
-
+      width: 100%; height: auto; display: block; border-radius: 8px;
+      mix-blend-mode: lighten; opacity: 0.92;
+      filter: drop-shadow(0 0 35px rgba(197,168,128,0.12));
       transition: transform .35s ease, filter .35s ease, opacity .35s ease;
     }
-
-    .hero-logo-img:hover {
-      transform: scale(1.02);
-      filter: drop-shadow(0 0 50px rgba(197, 168, 128, 0.22));
-      opacity: 1;
-    }
-
+    .hero-logo-img:hover { transform: scale(1.02); filter: drop-shadow(0 0 50px rgba(197,168,128,0.22)); opacity: 1; }
     .role {
       margin-top: .75rem;
-
       font-family: 'Montserrat', sans-serif;
-
       font-weight: 500;
-
       font-size: clamp(.85rem, 1.6vw, 1.05rem);
-
       letter-spacing: .2em;
-
       text-transform: uppercase;
-
       color: var(--gold);
     }
-
-    .tagline {
-      max-width: 520px;
-
-      margin: 1.6rem auto 2.4rem;
-
-      color: var(--ink-muted);
-
-      font-size: 1.05rem;
-    }
-
-    .hero-ctas {
-      display: flex;
-
-      gap: 1rem;
-
-      justify-content: center;
-
-      flex-wrap: wrap;
-    }
-
+    .tagline { max-width: 520px; margin: 1.6rem auto 2.4rem; color: var(--ink-muted); font-size: 1.05rem; }
+    .hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
     .btn {
       font-family: 'IBM Plex Mono', monospace;
-
       font-size: .85rem;
-
       letter-spacing: .08em;
-
       text-transform: uppercase;
-
       padding: 1.1rem 1.8rem;
-
       border-radius: var(--radius);
-
       text-decoration: none;
-
       display: inline-block;
-
       border: 1px solid var(--line-gold);
-
       cursor: pointer;
-
       background: none;
     }
-
-    .btn-solid {
-      background: var(--gold);
-      color: #141312;
-      border-color: var(--gold);
-      font-weight: 600;
-    }
-
-    .btn-solid:hover {
-      background: var(--gold-light);
-      border-color: var(--gold-light);
-      color: #141312;
-      box-shadow: 0 4px 20px rgba(197, 168, 128, 0.3);
-    }
-
-    .btn-outline {
-      border: 1px solid var(--line-gold);
-      color: var(--ink);
-    }
-
-    .btn-outline:hover {
-      background: rgba(197, 168, 128, 0.1);
-      border-color: var(--gold);
-      color: var(--gold);
-    }
-
+    .btn-solid { background: var(--gold); color: #141312; border-color: var(--gold); font-weight: 600; }
+    .btn-solid:hover { background: var(--gold-light); border-color: var(--gold-light); color: #141312; box-shadow: 0 4px 20px rgba(197,168,128,0.3); }
+    .btn-outline { border: 1px solid var(--line-gold); color: var(--ink); }
+    .btn-outline:hover { background: rgba(197,168,128,0.1); border-color: var(--gold); color: var(--gold); }
     @media (prefers-reduced-motion: no-preference) {
-
-      .btn {
-        transition:
-          background .25s ease,
-          border-color .25s ease,
-          color .25s ease,
-          box-shadow .25s ease;
-      }
-
+      .btn { transition: background .25s ease, border-color .25s ease, color .25s ease, box-shadow .25s ease; }
     }
 
 
@@ -402,52 +196,15 @@
        ===================================================== */
 
     .seal {
-      position: absolute;
-
-      top: 1.5rem;
-      right: 1.5rem;
-
-      width: 88px;
-      height: 88px;
-
-      border: 1.5px dashed var(--gold);
-
-      border-radius: 50%;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      color: var(--gold);
-
-      font-family: 'IBM Plex Mono', monospace;
-
-      font-size: .58rem;
-
-      opacity: .85;
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      width: 88px; height: 88px;
+      border: 1.5px dashed var(--gold); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-family: 'IBM Plex Mono', monospace; font-size: .58rem; opacity: .85;
     }
-
-    .seal svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-
-      .seal {
-        animation: spin 26s linear infinite;
-      }
-
-    }
-
-    @keyframes spin {
-
-      to {
-        transform: rotate(360deg);
-      }
-
-    }
+    .seal svg { width: 100%; height: 100%; }
+    @media (prefers-reduced-motion: no-preference) { .seal { animation: spin 26s linear infinite; } }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
 
     /* =====================================================
@@ -455,289 +212,83 @@
        ===================================================== */
 
     .index-bar {
-      position: sticky;
-
-      top: 0;
-
-      z-index: 20;
-
-      background: rgba(20, 19, 18, 0.94);
-      backdrop-filter: blur(12px);
-
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(20,19,18,0.94); backdrop-filter: blur(12px);
+      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
     }
-
-    .index-row {
-      display: flex;
-
-      justify-content: center;
-
-      gap: 0;
-    }
-
+    .index-row { display: flex; justify-content: center; gap: 0; }
     .tab {
       font-family: 'IBM Plex Mono', monospace;
-
-      font-size: .78rem;
-
-      letter-spacing: .08em;
-
-      text-transform: uppercase;
-
-      padding: .9rem 1.3rem;
-
-      background: none;
-
-      border: none;
-
-      border-right: 1px solid var(--line);
-
-      cursor: pointer;
-
-      color: var(--ink-muted);
+      font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+      padding: .9rem 1.3rem; background: none; border: none;
+      border-right: 1px solid var(--line); cursor: pointer; color: var(--ink-muted);
     }
-
-    .tab:last-child {
-      border-right: none;
-    }
-
-    .tab .count {
-      color: var(--gold);
-      margin-left: .35rem;
-    }
-
-    .tab.active {
-      color: var(--gold);
-
-      background: var(--paper-card);
-
-      font-weight: 600;
-
-      border-bottom: 2px solid var(--gold);
-    }
-
-    .tab:hover {
-      color: var(--gold);
-    }
+    .tab:last-child { border-right: none; }
+    .tab .count { color: var(--gold); margin-left: .35rem; }
+    .tab.active { color: var(--gold); background: var(--paper-card); font-weight: 600; border-bottom: 2px solid var(--gold); }
+    .tab:hover { color: var(--gold); }
 
 
     /* =====================================================
-       CAMERAS SECTION & BADGES
+       CAMERAS SECTION
        ===================================================== */
 
-    .cameras-section {
-      padding: 3rem 0 1rem;
-      border-bottom: 1px solid var(--line);
-    }
-
+    .cameras-section { padding: 3rem 0 1rem; border-bottom: 1px solid var(--line); }
     .camera-tabs-row {
-      display: inline-flex;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      overflow: hidden;
-      margin-bottom: 1.75rem;
-      background: var(--paper-dark);
+      display: inline-flex; border: 1px solid var(--line); border-radius: var(--radius);
+      overflow: hidden; margin-bottom: 1.75rem; background: var(--paper-dark);
     }
-
     .camera-tab {
-      background: transparent;
-      border: none;
-      border-right: 1px solid var(--line);
-      padding: .45rem 1rem;
-      font-size: .72rem;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      color: var(--ink-muted);
-      cursor: pointer;
-      transition: all 0.2s ease;
+      background: transparent; border: none; border-right: 1px solid var(--line);
+      padding: .45rem 1rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em;
+      color: var(--ink-muted); cursor: pointer; transition: all 0.2s ease;
     }
-
-    .camera-tab:last-child {
-      border-right: none;
-    }
-
-    .camera-tab .count {
-      color: var(--gold);
-      margin-left: .35rem;
-    }
-
-    .camera-tab.active {
-      color: var(--gold);
-      background: var(--paper-card);
-      font-weight: 600;
-      border-bottom: 2px solid var(--gold);
-    }
-
-    .camera-tab:hover {
-      color: var(--gold);
-    }
-
-    .cameras-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.25rem;
-      align-items: center;
-      margin-bottom: 2rem;
-    }
-
-    .cameras-empty {
-      display: none;
-      width: 100%;
-      padding: 2rem 1.5rem;
-      background: var(--paper-card);
-      border: 1px dashed var(--line);
-      border-radius: var(--radius);
-      color: var(--ink-muted);
-      font-size: .8rem;
-      text-align: center;
-    }
-
+    .camera-tab:last-child { border-right: none; }
+    .camera-tab .count { color: var(--gold); margin-left: .35rem; }
+    .camera-tab.active { color: var(--gold); background: var(--paper-card); font-weight: 600; border-bottom: 2px solid var(--gold); }
+    .camera-tab:hover { color: var(--gold); }
+    .cameras-grid { display: flex; flex-wrap: wrap; gap: 1.25rem; align-items: center; margin-bottom: 2rem; }
+    .cameras-empty { display: none; width: 100%; padding: 2rem 1.5rem; background: var(--paper-card); border: 1px dashed var(--line); border-radius: var(--radius); color: var(--ink-muted); font-size: .8rem; text-align: center; }
     .tiny-camera-space {
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: .8rem;
-
-      background: var(--paper-card);
-
-      border: 1px solid var(--line);
-
-      border-radius: 40px;
-
-      padding: .35rem 1.3rem .35rem .35rem;
-
-      text-decoration: none;
-
-      cursor: pointer;
-
+      display: inline-flex; align-items: center; gap: .8rem;
+      background: var(--paper-card); border: 1px solid var(--line); border-radius: 40px;
+      padding: .35rem 1.3rem .35rem .35rem; text-decoration: none; cursor: pointer;
       transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     }
-
-    .tiny-camera-space:hover {
-      transform: translateY(-2px);
-      border-color: var(--gold);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-    }
-
+    .tiny-camera-space:hover { transform: translateY(-2px); border-color: var(--gold); box-shadow: 0 4px 16px rgba(0,0,0,0.4); }
     .tiny-camera-thumb {
-      width: 42px;
-      height: 42px;
-
-      border-radius: 50%;
-
-      border: 1px solid var(--line-gold);
-
-      overflow: hidden;
-
-      background: #0E0D0C;
-
-      flex-shrink: 0;
+      width: 42px; height: 42px; border-radius: 50%;
+      border: 1px solid var(--line-gold); overflow: hidden; background: #0E0D0C; flex-shrink: 0;
     }
-
-    .tiny-camera-thumb img {
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-    }
-
-    .tiny-camera-details {
-      display: flex;
-
-      flex-direction: column;
-
-      justify-content: center;
-    }
-
+    .tiny-camera-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .tiny-camera-details { display: flex; flex-direction: column; justify-content: center; }
     .tiny-camera-details span.label {
-      font-family: 'IBM Plex Mono', monospace;
-
-      font-size: .55rem;
-
-      text-transform: uppercase;
-
-      letter-spacing: .12em;
-
-      color: var(--gold);
-
-      margin-bottom: .15rem;
+      font-family: 'IBM Plex Mono', monospace; font-size: .55rem;
+      text-transform: uppercase; letter-spacing: .12em; color: var(--gold); margin-bottom: .15rem;
     }
-
     .tiny-camera-details span.model {
-      font-family: 'Archivo', sans-serif;
-
-      font-weight: 800;
-
-      font-size: .8rem;
-
-      color: var(--ink);
-
-      text-transform: uppercase;
-
-      line-height: 1;
+      font-family: 'Archivo', sans-serif; font-weight: 800; font-size: .8rem;
+      color: var(--ink); text-transform: uppercase; line-height: 1;
     }
-
     .tiny-camera-brand {
-      display: block;
-      margin-top: .35rem;
-      height: 10px;
-      width: auto;
-      max-width: 52px;
-      opacity: 0.55;
-      filter: brightness(0) invert(1);
-      object-fit: contain;
-      object-position: left center;
-      transition: opacity 0.2s ease;
+      display: block; margin-top: .35rem; height: 10px; width: auto; max-width: 52px;
+      opacity: 0.55; filter: brightness(0) invert(1); object-fit: contain;
+      object-position: left center; transition: opacity 0.2s ease;
     }
-
-    .tiny-camera-space:hover .tiny-camera-brand {
-      opacity: 0.85;
-    }
+    .tiny-camera-space:hover .tiny-camera-brand { opacity: 0.85; }
 
 
     /* =====================================================
        CATALOGUE
        ===================================================== */
 
-    .catalogue {
-      padding: 3.5rem 0 1rem;
-    }
-
+    .catalogue { padding: 3.5rem 0 1rem; }
     .section-head {
-      display: flex;
-
-      align-items: baseline;
-
-      justify-content: space-between;
-
-      margin-bottom: 2rem;
-
-      border-bottom: 1px solid var(--line);
-
-      padding-bottom: .75rem;
+      display: flex; align-items: baseline; justify-content: space-between;
+      margin-bottom: 2rem; border-bottom: 1px solid var(--line); padding-bottom: .75rem;
     }
-
-    .section-head h2 {
-      font-family: 'Archivo', sans-serif;
-
-      font-weight: 800;
-
-      text-transform: uppercase;
-
-      letter-spacing: .03em;
-
-      font-size: 1.4rem;
-    }
-
-    .section-head span {
-      font-family: 'IBM Plex Mono', monospace;
-
-      font-size: .75rem;
-
-      color: var(--ink-muted);
-    }
+    .section-head h2 { font-family: 'Archivo', sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: .03em; font-size: 1.4rem; }
+    .section-head span { font-family: 'IBM Plex Mono', monospace; font-size: .75rem; color: var(--ink-muted); }
 
 
     /* =====================================================
@@ -746,54 +297,20 @@
 
     .grid {
       display: grid;
-
-      grid-template-columns:
-        repeat(auto-fit, minmax(270px, 1fr));
-
-      gap: 1.6rem;
-
-      max-width: 100%;
-
-      margin: 0 auto;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1.6rem; max-width: 100%; margin: 0 auto;
     }
-
     .card {
-      background: var(--paper-card);
-
-      border: 1px solid var(--line);
-
-      border-radius: var(--radius);
-
-      padding: 1.2rem;
-
-      position: relative;
-
-      display: flex;
-
-      flex-direction: column;
-
-      min-width: 0;
+      background: var(--paper-card); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 1.2rem; position: relative; display: flex; flex-direction: column; min-width: 0;
     }
-
     .card:hover {
       transform: translateY(-6px) rotate(-.3deg);
-
-      box-shadow:
-        0 16px 36px -12px rgba(0, 0, 0, .7),
-        0 0 24px -6px rgba(197, 168, 128, .2);
-
+      box-shadow: 0 16px 36px -12px rgba(0,0,0,.7), 0 0 24px -6px rgba(197,168,128,.2);
       border-color: var(--gold);
     }
-
     @media (prefers-reduced-motion: no-preference) {
-
-      .card {
-        transition:
-          transform .3s ease,
-          box-shadow .3s ease,
-          border-color .3s ease;
-      }
-
+      .card { transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
     }
 
 
@@ -801,72 +318,18 @@
        CARD HEADER
        ===================================================== */
 
-    .card-top {
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: flex-start;
-
-      margin-bottom: .85rem;
-    }
-
-    .code {
-      font-family: 'IBM Plex Mono', monospace;
-
-      font-size: .72rem;
-
-      color: var(--ink-muted);
-
-      letter-spacing: .05em;
-    }
-
+    .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: .85rem; }
+    .code { font-family: 'IBM Plex Mono', monospace; font-size: .72rem; color: var(--ink-muted); letter-spacing: .05em; }
     .stamp-badge {
-      font-family: 'IBM Plex Mono', monospace;
-
-      font-size: .62rem;
-
-      letter-spacing: .12em;
-
-      text-transform: uppercase;
-
-      border: 1.5px solid var(--gold);
-
-      color: var(--gold);
-
-      background: rgba(197, 168, 128, 0.08);
-
-      padding: .2rem .5rem;
-
-      border-radius: var(--radius);
-
-      transform: rotate(-4deg);
-
-      opacity: 0;
+      font-family: 'IBM Plex Mono', monospace; font-size: .62rem; letter-spacing: .12em;
+      text-transform: uppercase; border: 1.5px solid var(--gold); color: var(--gold);
+      background: rgba(197,168,128,0.08); padding: .2rem .5rem; border-radius: var(--radius);
+      transform: rotate(-4deg); opacity: 0;
     }
-
-    [data-category="session"] .stamp-badge {
-      border-color: var(--teal);
-
-      color: var(--teal);
-
-      transform: rotate(3deg);
-    }
-
-    .card:hover .stamp-badge {
-      opacity: 1;
-
-      transform: rotate(-6deg) scale(1.04);
-    }
-
+    [data-category="session"] .stamp-badge { border-color: var(--teal); color: var(--teal); transform: rotate(3deg); }
+    .card:hover .stamp-badge { opacity: 1; transform: rotate(-6deg) scale(1.04); }
     @media (prefers-reduced-motion: no-preference) {
-
-      .stamp-badge {
-        transition:
-          opacity .25s ease,
-          transform .25s ease;
-      }
-
+      .stamp-badge { transition: opacity .25s ease, transform .25s ease; }
     }
 
 
@@ -874,95 +337,20 @@
        VERTICAL FILM STRIP THUMBNAIL
        ===================================================== */
 
-    .thumb {
-      position: relative;
-
-      width: 100%;
-
-      border: 1px solid var(--line);
-
-      margin-bottom: 1rem;
-
-      overflow: hidden;
-
-      background: #0E0D0C;
-    }
-
-    .frame {
-      display: block;
-
-      width: calc(100% - 24px);
-
-      height: auto;
-
-      margin: 0 12px;
-    }
-
-    /*
-     * Vertical film-strip perforations.
-     * These remain on the left and right edges
-     * while the photograph fills the center.
-     */
-
-    .thumb::before,
-    .thumb::after {
-      content: '';
-
-      position: absolute;
-
-      top: 0;
-      bottom: 0;
-
-      width: 12px;
-
+    .thumb { position: relative; width: 100%; border: 1px solid var(--line); margin-bottom: 1rem; overflow: hidden; background: #0E0D0C; }
+    .frame { display: block; width: calc(100% - 24px); height: auto; margin: 0 12px; }
+    .thumb::before, .thumb::after {
+      content: ''; position: absolute; top: 0; bottom: 0; width: 12px;
       background-color: #0E0D0C;
-
-      background-image:
-        repeating-linear-gradient(to bottom,
-          #221F1A 0 5px,
-          transparent 5px 15px);
-
-      background-position: center;
-
-      background-repeat: repeat-y;
-
-      z-index: 2;
-
-      pointer-events: none;
+      background-image: repeating-linear-gradient(to bottom, #221F1A 0 5px, transparent 5px 15px);
+      background-position: center; background-repeat: repeat-y; z-index: 2; pointer-events: none;
     }
-
-    .thumb::before {
-      left: 0;
-    }
-
-    .thumb::after {
-      right: 0;
-    }
-
-    /*
-     * Keep the image between the two vertical
-     * film edges.
-     */
-
+    .thumb::before { left: 0; }
+    .thumb::after { right: 0; }
     .frame-num {
-      position: absolute;
-
-      bottom: 8px;
-
-      right: 17px;
-
-      font-family: 'IBM Plex Mono', monospace;
-
-      font-size: .62rem;
-
-      letter-spacing: .03em;
-
-      color: rgba(243, 237, 220, .9);
-
-      text-shadow:
-        0 1px 2px rgba(0, 0, 0, .5);
-
-      z-index: 3;
+      position: absolute; bottom: 8px; right: 17px;
+      font-family: 'IBM Plex Mono', monospace; font-size: .62rem; letter-spacing: .03em;
+      color: rgba(243,237,220,.9); text-shadow: 0 1px 2px rgba(0,0,0,.5); z-index: 3;
     }
 
 
@@ -970,535 +358,136 @@
        FILM PERFORATION DIVIDER
        ===================================================== */
 
-    .perf {
-      position: relative;
-
-      border-top: 1px dashed var(--line);
-
-      margin: 0 0 .9rem;
+    .perf { position: relative; border-top: 1px dashed var(--line); margin: 0 0 .9rem; }
+    .perf::before, .perf::after {
+      content: ''; position: absolute; top: -6px; width: 11px; height: 11px;
+      border-radius: 50%; background: var(--paper); border: 1px solid var(--line);
     }
-
-    .perf::before,
-    .perf::after {
-      content: '';
-
-      position: absolute;
-
-      top: -6px;
-
-      width: 11px;
-      height: 11px;
-
-      border-radius: 50%;
-
-      background: var(--paper);
-
-      border: 1px solid var(--line);
-    }
-
-    .perf::before {
-      left: -1.1rem;
-    }
-
-    .perf::after {
-      right: -1.1rem;
-    }
+    .perf::before { left: -1.1rem; }
+    .perf::after { right: -1.1rem; }
 
 
     /* =====================================================
        CARD CONTENT
        ===================================================== */
 
-    .card h3 {
-      font-family: 'Archivo', sans-serif;
+    .card h3 { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 1.12rem; margin-bottom: .5rem; letter-spacing: -.005em; }
 
-      font-weight: 800;
-
-      font-size: 1.12rem;
-
-      margin-bottom: .6rem;
-
-      letter-spacing: -.005em;
+    /* Film brand logo — sits directly under the card title */
+    .film-brand { display: flex; align-items: center; margin-bottom: .65rem; }
+    .film-brand-logo {
+      height: 13px; width: auto; max-width: 72px;
+      filter: brightness(0) invert(1); opacity: 0.45;
+      object-fit: contain; transition: opacity .25s ease;
     }
+    .card:hover .film-brand-logo { opacity: 0.8; }
 
-    .meta {
-      font-family: 'IBM Plex Mono', monospace;
-
-      font-size: .72rem;
-
-      color: var(--ink-muted);
-
-      display: grid;
-
-      gap: .28rem;
-
-      margin-bottom: .8rem;
+    /* Shot on row — camera brand logo + model name */
+    .shot-on {
+      display: flex; align-items: center; gap: .45rem; margin-bottom: .85rem;
+      font-family: 'IBM Plex Mono', monospace; font-size: .63rem;
+      text-transform: uppercase; letter-spacing: .1em; color: var(--ink-muted);
     }
-
-    .meta span {
-      color: var(--ink);
+    .shot-on-label { flex-shrink: 0; }
+    .shot-on-logo {
+      height: 11px; width: auto; max-width: 48px;
+      filter: brightness(0) invert(1); opacity: 0.4;
+      object-fit: contain; flex-shrink: 0; transition: opacity .25s ease;
     }
+    .card:hover .shot-on-logo { opacity: 0.75; }
+    .shot-on-model { color: var(--ink); font-size: .63rem; }
 
-    .desc {
-      font-size: .9rem;
-
-      color: var(--ink-muted);
-
-      margin-bottom: 1rem;
-
-      flex-grow: 1;
-    }
-
+    .meta { font-family: 'IBM Plex Mono', monospace; font-size: .72rem; color: var(--ink-muted); display: grid; gap: .28rem; margin-bottom: .8rem; }
+    .meta span { color: var(--ink); }
+    .desc { font-size: .9rem; color: var(--ink-muted); margin-bottom: 1rem; flex-grow: 1; }
     .card-link {
-      font-family: 'IBM Plex Mono', monospace;
-
-      font-size: .75rem;
-
-      text-transform: uppercase;
-
-      letter-spacing: .08em;
-
-      text-decoration: none;
-
-      color: var(--gold);
-
-      border-bottom: 1px solid var(--line-gold);
-
-      align-self: flex-start;
-
-      padding-bottom: 2px;
-
-      cursor: pointer;
+      font-family: 'IBM Plex Mono', monospace; font-size: .75rem; text-transform: uppercase;
+      letter-spacing: .08em; text-decoration: none; color: var(--gold);
+      border-bottom: 1px solid var(--line-gold); align-self: flex-start; padding-bottom: 2px; cursor: pointer;
     }
-
-    .card-link:hover {
-      color: var(--gold-light);
-
-      border-color: var(--gold-light);
-    }
+    .card-link:hover { color: var(--gold-light); border-color: var(--gold-light); }
 
 
     /* =====================================================
        ABOUT
        ===================================================== */
 
-    .about {
-      padding: 5rem 0;
-
-      border-top: 1px solid var(--line);
-
-      border-bottom: 1px solid var(--line);
-
-      margin-top: 4rem;
-    }
-
-    .about-inner {
-      max-width: 680px;
-
-      margin: 0 auto;
-
-      text-align: center;
-    }
-
-    .about h2 {
-      font-family: 'IBM Plex Mono', monospace;
-
-      font-size: .75rem;
-
-      letter-spacing: .18em;
-
-      text-transform: uppercase;
-
-      color: var(--gold);
-
-      margin-bottom: 1.3rem;
-    }
-
-    .about p {
-      font-size: 1.15rem;
-
-      color: var(--ink);
-    }
-
-    .tags {
-      margin-top: 2rem;
-
-      display: flex;
-
-      gap: .6rem;
-
-      flex-wrap: wrap;
-
-      justify-content: center;
-    }
-
+    .about { padding: 5rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: 4rem; }
+    .about-inner { max-width: 680px; margin: 0 auto; text-align: center; }
+    .about h2 { font-family: 'IBM Plex Mono', monospace; font-size: .75rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.3rem; }
+    .about p { font-size: 1.15rem; color: var(--ink); }
+    .tags { margin-top: 2rem; display: flex; gap: .6rem; flex-wrap: wrap; justify-content: center; }
     .tag {
-      font-family: 'IBM Plex Mono', monospace;
-
-      font-size: .7rem;
-
-      letter-spacing: .05em;
-
-      text-transform: uppercase;
-
-      border: 1px solid var(--line-gold);
-
-      background: rgba(197, 168, 128, 0.03);
-
-      padding: .4rem .7rem;
-
-      border-radius: var(--radius);
-
-      color: var(--ink-muted);
-
+      font-family: 'IBM Plex Mono', monospace; font-size: .7rem; letter-spacing: .05em;
+      text-transform: uppercase; border: 1px solid var(--line-gold); background: rgba(197,168,128,0.03);
+      padding: .4rem .7rem; border-radius: var(--radius); color: var(--ink-muted);
       transition: border-color .2s ease, color .2s ease;
     }
-
-    .tag:hover {
-      border-color: var(--gold);
-      color: var(--gold);
-    }
+    .tag:hover { border-color: var(--gold); color: var(--gold); }
 
 
     /* =====================================================
        CONTACT
        ===================================================== */
 
-    .contact {
-      padding: 5rem 0 4rem;
-    }
-
+    .contact { padding: 5rem 0 4rem; }
     .order-form {
-      max-width: 640px;
-
-      margin: 0 auto;
-
-      border: 1px solid var(--line-gold);
-
-      border-radius: var(--radius);
-
-      padding: 2.4rem;
-
-      text-align: center;
-
-      background: var(--paper-card);
-
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      max-width: 640px; margin: 0 auto; border: 1px solid var(--line-gold); border-radius: var(--radius);
+      padding: 2.4rem; text-align: center; background: var(--paper-card); box-shadow: 0 20px 40px rgba(0,0,0,0.5);
     }
-
-    .order-form h2 {
-      font-family: 'Archivo Black', sans-serif;
-
-      text-transform: uppercase;
-
-      font-size: 1.8rem;
-
-      margin-bottom: .9rem;
-    }
-
-    .order-form p {
-      color: var(--ink-muted);
-
-      margin-bottom: 1.8rem;
-    }
-
-    .contact-rows {
-      display: grid;
-
-      gap: .5rem;
-
-      margin-bottom: 2rem;
-
-      font-family: 'IBM Plex Mono', monospace;
-
-      font-size: .82rem;
-    }
-
-    .contact-rows div {
-      display: flex;
-
-      justify-content: space-between;
-
-      border-bottom: 1px dotted var(--line);
-
-      padding: .4rem .1rem;
-    }
-
-    .contact-rows span:first-child {
-      color: var(--ink-muted);
-
-      text-transform: uppercase;
-
-      letter-spacing: .06em;
-    }
-
-    .order-form-actions {
-      display: flex;
-
-      gap: 1rem;
-
-      justify-content: center;
-
-      flex-wrap: wrap;
-    }
+    .order-form h2 { font-family: 'Archivo Black', sans-serif; text-transform: uppercase; font-size: 1.8rem; margin-bottom: .9rem; }
+    .order-form p { color: var(--ink-muted); margin-bottom: 1.8rem; }
+    .contact-rows { display: grid; gap: .5rem; margin-bottom: 2rem; font-family: 'IBM Plex Mono', monospace; font-size: .82rem; }
+    .contact-rows div { display: flex; justify-content: space-between; border-bottom: 1px dotted var(--line); padding: .4rem .1rem; }
+    .contact-rows span:first-child { color: var(--ink-muted); text-transform: uppercase; letter-spacing: .06em; }
+    .order-form-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
 
     /* =====================================================
        FOOTER
        ===================================================== */
 
-    footer {
-      border-top: 1px solid var(--line);
-
-      padding: 1.6rem 0 2.4rem;
-
-      text-align: center;
-    }
-
-    footer p {
-      font-family: 'IBM Plex Mono', monospace;
-
-      font-size: .68rem;
-
-      color: var(--ink-muted);
-
-      letter-spacing: .03em;
-
-      max-width: 520px;
-
-      margin: 0 auto .5rem;
-    }
-
-    footer .end {
-      font-size: .7rem;
-
-      letter-spacing: .15em;
-
-      text-transform: uppercase;
-
-      color: var(--gold);
-
-      margin-top: 1rem;
-    }
-
-
+    footer { border-top: 1px solid var(--line); padding: 1.6rem 0 2.4rem; text-align: center; }
+    footer p { font-family: 'IBM Plex Mono', monospace; font-size: .68rem; color: var(--ink-muted); letter-spacing: .03em; max-width: 520px; margin: 0 auto .5rem; }
+    footer .end { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); margin-top: 1rem; }
 
 
     /* =====================================================
        PAGE LOAD SHUTTER
        ===================================================== */
 
-    #page-load-shutter {
-      position: fixed;
-
-      inset: 0;
-
-      z-index: 9999;
-
-      pointer-events: none;
-
-      display: flex;
-
-      flex-direction: column;
-    }
-
+    #page-load-shutter { position: fixed; inset: 0; z-index: 9999; pointer-events: none; display: flex; flex-direction: column; }
     .load-blade {
-      flex: 1;
-
-      background-color: var(--ink);
-
-      background-image:
-        linear-gradient(to bottom,
-          var(--ink),
-          #15120d);
-
-      border-bottom:
-        1px solid rgba(255, 255, 255, .05);
-
-      transform: translateY(0);
-
-      transition:
-        transform .85s cubic-bezier(.8, 0, .2, 1);
-
-      width: 100%;
+      flex: 1; background-color: var(--ink);
+      background-image: linear-gradient(to bottom, var(--ink), #15120d);
+      border-bottom: 1px solid rgba(255,255,255,.05);
+      transform: translateY(0); transition: transform .85s cubic-bezier(.8,0,.2,1); width: 100%;
     }
-
-    .load-blade.bottom {
-      background-image:
-        linear-gradient(to top,
-          var(--ink),
-          #15120d);
-
-      border-top:
-        1px solid rgba(255, 255, 255, .05);
-
-      border-bottom: none;
-    }
-
-    #page-load-shutter.open .load-blade.top {
-      transform: translateY(-100%);
-    }
-
-    #page-load-shutter.open .load-blade.bottom {
-      transform: translateY(100%);
-    }
+    .load-blade.bottom { background-image: linear-gradient(to top, var(--ink), #15120d); border-top: 1px solid rgba(255,255,255,.05); border-bottom: none; }
+    #page-load-shutter.open .load-blade.top { transform: translateY(-100%); }
+    #page-load-shutter.open .load-blade.bottom { transform: translateY(100%); }
 
 
     /* =====================================================
        CAMERA MODAL
        ===================================================== */
 
-    .camera-modal {
-      position: fixed;
-
-      inset: 0;
-
-      z-index: 100;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      pointer-events: none;
-
-      visibility: hidden;
-    }
-
-    .camera-modal.active {
-      pointer-events: all;
-
-      visibility: visible;
-    }
-
-    .shutter {
-      position: absolute;
-
-      left: 0;
-
-      width: 100%;
-
-      height: 50vh;
-
-      background: var(--ink);
-
-      z-index: 101;
-
-      transition:
-        transform .35s cubic-bezier(.2, 1, .3, 1);
-    }
-
-    .shutter-top {
-      top: 0;
-
-      transform: translateY(-100%);
-    }
-
-    .shutter-bottom {
-      bottom: 0;
-
-      transform: translateY(100%);
-    }
-
+    .camera-modal { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; pointer-events: none; visibility: hidden; }
+    .camera-modal.active { pointer-events: all; visibility: visible; }
+    .shutter { position: absolute; left: 0; width: 100%; height: 50vh; background: var(--ink); z-index: 101; transition: transform .35s cubic-bezier(.2,1,.3,1); }
+    .shutter-top { top: 0; transform: translateY(-100%); }
+    .shutter-bottom { bottom: 0; transform: translateY(100%); }
     .camera-modal.active .shutter-top,
-    .camera-modal.active .shutter-bottom {
-      transform: translateY(0);
-    }
-
-    .camera-modal-content {
-      position: relative;
-
-      z-index: 102;
-
-      opacity: 0;
-
-      transform: scale(.95);
-
-      transition:
-        opacity .3s ease .4s,
-        transform .3s ease .4s;
-
-      text-align: center;
-
-      color: var(--paper);
-    }
-
-    .camera-modal.active .camera-modal-content {
-      opacity: 1;
-
-      transform: scale(1);
-    }
-
-    .camera-modal.shutter-only .camera-modal-content {
-      display: none;
-    }
-
-    .camera-modal-content img {
-      max-width: 90vw;
-
-      max-height: 55vh;
-
-      border-radius: var(--radius);
-
-      box-shadow:
-        0 20px 40px rgba(0, 0, 0, .5);
-
-      margin-bottom: 1.5rem;
-    }
-
-    .flash-overlay {
-      position: fixed;
-
-      inset: 0;
-
-      background: white;
-
-      z-index: 200;
-
-      opacity: 0;
-
-      pointer-events: none;
-    }
-
-    .flash-overlay.flash-active {
-      animation:
-        flashAnim .7s ease-out forwards;
-    }
-
-    @keyframes flashAnim {
-
-      0% {
-        opacity: 1;
-      }
-
-      100% {
-        opacity: 0;
-      }
-
-    }
-
-    .close-modal {
-      position: absolute;
-
-      top: -2.5rem;
-
-      right: 0;
-
-      background: none;
-
-      border: none;
-
-      color: var(--line);
-
-      cursor: pointer;
-
-      font-size: .8rem;
-    }
-
-    .close-modal:hover {
-      color: white;
-    }
+    .camera-modal.active .shutter-bottom { transform: translateY(0); }
+    .camera-modal-content { position: relative; z-index: 102; opacity: 0; transform: scale(.95); transition: opacity .3s ease .4s, transform .3s ease .4s; text-align: center; color: var(--paper); }
+    .camera-modal.active .camera-modal-content { opacity: 1; transform: scale(1); }
+    .camera-modal.shutter-only .camera-modal-content { display: none; }
+    .camera-modal-content img { max-width: 90vw; max-height: 55vh; border-radius: var(--radius); box-shadow: 0 20px 40px rgba(0,0,0,.5); margin-bottom: 1.5rem; }
+    .flash-overlay { position: fixed; inset: 0; background: white; z-index: 200; opacity: 0; pointer-events: none; }
+    .flash-overlay.flash-active { animation: flashAnim .7s ease-out forwards; }
+    @keyframes flashAnim { 0% { opacity: 1; } 100% { opacity: 0; } }
+    .close-modal { position: absolute; top: -2.5rem; right: 0; background: none; border: none; color: var(--line); cursor: pointer; font-size: .8rem; }
+    .close-modal:hover { color: white; }
 
 
     /* =====================================================
@@ -1506,96 +495,23 @@
        ===================================================== */
 
     @media (max-width: 700px) {
-
-      .masthead-row {
-        grid-template-columns: 1fr;
-
-        gap: .45rem;
-      }
-
-      .masthead-row>* {
-        text-align: center !important;
-      }
-
-      .sound-toggle {
-        justify-self: center;
-
-        margin-top: .2rem;
-      }
-
-      .index-row {
-        flex-wrap: wrap;
-      }
-
-      .wrap {
-        padding: 0 1rem;
-      }
-
-      .hero-logo-container {
-        width: 90%;
-        max-width: 300px;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-
-        max-width: 480px;
-      }
-
-      .order-form {
-        padding: 1.5rem 1rem;
-      }
-
-      .contact-rows div {
-        flex-direction: column;
-
-        align-items: center;
-
-        text-align: center;
-
-        gap: .2rem;
-
-        padding: .8rem 0;
-      }
-
-      .section-head {
-        flex-direction: column;
-
-        gap: .4rem;
-      }
-
+      .masthead-row { grid-template-columns: 1fr; gap: .45rem; }
+      .masthead-row > * { text-align: center !important; }
+      .sound-toggle { justify-self: center; margin-top: .2rem; }
+      .index-row { flex-wrap: wrap; }
+      .wrap { padding: 0 1rem; }
+      .hero-logo-container { width: 90%; max-width: 300px; }
+      .grid { grid-template-columns: 1fr; max-width: 480px; }
+      .order-form { padding: 1.5rem 1rem; }
+      .contact-rows div { flex-direction: column; align-items: center; text-align: center; gap: .2rem; padding: .8rem 0; }
+      .section-head { flex-direction: column; gap: .4rem; }
     }
-
     @media (max-width: 420px) {
-
-      .hero {
-        padding-top: 3rem;
-      }
-
-      .seal {
-        width: 68px;
-        height: 68px;
-
-        top: 1rem;
-        right: 1rem;
-      }
-
-      .tab {
-        padding: .75rem .8rem;
-
-        font-size: .7rem;
-      }
-
-      .hero-ctas {
-        flex-direction: column;
-
-        align-items: stretch;
-      }
-
-      .hero-ctas .btn {
-        width: 100%;
-      }
-
+      .hero { padding-top: 3rem; }
+      .seal { width: 68px; height: 68px; top: 1rem; right: 1rem; }
+      .tab { padding: .75rem .8rem; font-size: .7rem; }
+      .hero-ctas { flex-direction: column; align-items: stretch; }
+      .hero-ctas .btn { width: 100%; }
     }
   </style>
 </head>
@@ -1609,11 +525,8 @@
        ===================================================== -->
 
   <div id="page-load-shutter">
-
     <div class="load-blade top"></div>
-
     <div class="load-blade bottom"></div>
-
   </div>
 
 
@@ -1622,33 +535,15 @@
        ===================================================== -->
 
   <div class="masthead">
-
     <div class="wrap masthead-row mono">
-
-      <span>
-        Photography — Vol. I
-      </span>
-
-
+      <span>Photography — Vol. I</span>
       <nav class="masthead-nav">
-
-        <a href="index.html" class="masthead-back-link">
-
-          The RT Folio
-
-        </a>
-
+        <a href="index.html" class="masthead-back-link">The RT Folio</a>
       </nav>
-
-
       <button id="sound-toggle" class="sound-toggle mono" type="button" aria-label="Mute sound effects">
-
         🔊 SFX ON
-
       </button>
-
     </div>
-
   </div>
 
 
@@ -1659,78 +554,28 @@
   <section class="hero">
 
     <div class="seal" aria-hidden="true">
-
       <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-
         <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="1" />
-
-        <path id="circlePath" d="
-            M 50,50
-            m -36,0
-            a 36,36 0 1,1 72,0
-            a 36,36 0 1,1 -72,0
-          " fill="none" />
-
+        <path id="circlePath" d="M 50,50 m -36,0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0" fill="none" />
         <text font-size="7.2" fill="currentColor">
-
           <textPath href="#circlePath" startOffset="0%" textLength="226" lengthAdjust="spacingAndGlyphs">
-
-            THE RT FOLIO • PHOTO ARCHIVE •
-            THE RT FOLIO • PHOTO ARCHIVE •
-
+            THE RT FOLIO • PHOTO ARCHIVE • THE RT FOLIO • PHOTO ARCHIVE •
           </textPath>
-
         </text>
-
       </svg>
-
     </div>
 
-
     <div class="wrap hidden">
-
-      <p class="hero-eyebrow mono">
-        Photo Archive — Vol. I
-      </p>
-
-
+      <p class="hero-eyebrow mono">Photo Archive — Vol. I</p>
       <div class="hero-logo-container">
-
         <img src="images/thertfolio-logo.jpg" alt="The RT Folio — Film Archive Logo" class="hero-logo-img">
-
       </div>
-
-
-      <p class="role">
-        Curated Photography
-      </p>
-
-
-      <p class="tagline">
-
-        A curated archive of series and sessions —
-        light, grain, and timeless frames on film.
-
-      </p>
-
-
+      <p class="role">Curated Photography</p>
+      <p class="tagline">A curated archive of series and sessions — light, grain, and timeless frames on film.</p>
       <div class="hero-ctas">
-
-        <a href="#catalogue" class="btn btn-solid">
-
-          View Catalogue
-
-        </a>
-
-
-        <a href="#contact" class="btn btn-outline">
-
-          Book a Session
-
-        </a>
-
+        <a href="#catalogue" class="btn btn-solid">View Catalogue</a>
+        <a href="#contact" class="btn btn-outline">Book a Session</a>
       </div>
-
     </div>
 
   </section>
@@ -1741,41 +586,13 @@
        ===================================================== -->
 
   <nav class="index-bar" aria-label="Filter catalogue">
-
     <div class="wrap">
-
       <div class="index-row">
-
-        <button class="tab active mono" data-filter="all">
-
-          All
-
-          <span class="count" id="count-all"></span>
-
-        </button>
-
-
-        <button class="tab mono" data-filter="series">
-
-          Series
-
-          <span class="count" id="count-series"></span>
-
-        </button>
-
-
-        <button class="tab mono" data-filter="session">
-
-          Sessions
-
-          <span class="count" id="count-session"></span>
-
-        </button>
-
+        <button class="tab active mono" data-filter="all">All <span class="count" id="count-all"></span></button>
+        <button class="tab mono" data-filter="series">Series <span class="count" id="count-series"></span></button>
+        <button class="tab mono" data-filter="session">Sessions <span class="count" id="count-session"></span></button>
       </div>
-
     </div>
-
   </nav>
 
 
@@ -1784,72 +601,47 @@
        ===================================================== -->
 
   <section id="cameras" class="cameras-section hidden">
-
     <div class="wrap">
 
       <div class="section-head">
-
-        <h2>
-          Cameras & Gear
-        </h2>
-
-        <span class="mono">
-          Loaded & In Rotation
-        </span>
-
+        <h2>Cameras & Gear</h2>
+        <span class="mono">Loaded & In Rotation</span>
       </div>
 
-      <!-- CAMERA FILTER TABS -->
       <div class="camera-tabs-row" role="tablist" aria-label="Filter cameras by type">
-
-        <button class="camera-tab active mono" data-camera-filter="all" type="button" role="tab" aria-selected="true">
-          All
-          <span class="count" id="count-camera-all">2</span>
-        </button>
-
-        <button class="camera-tab mono" data-camera-filter="film" type="button" role="tab" aria-selected="false">
-          Film
-          <span class="count" id="count-camera-film">2</span>
-        </button>
-
-        <button class="camera-tab mono" data-camera-filter="digital" type="button" role="tab" aria-selected="false">
-          Digital
-          <span class="count" id="count-camera-digital">0</span>
-        </button>
-
+        <button class="camera-tab active mono" data-camera-filter="all" type="button" role="tab" aria-selected="true">All <span class="count" id="count-camera-all">2</span></button>
+        <button class="camera-tab mono" data-camera-filter="film" type="button" role="tab" aria-selected="false">Film <span class="count" id="count-camera-film">2</span></button>
+        <button class="camera-tab mono" data-camera-filter="digital" type="button" role="tab" aria-selected="false">Digital <span class="count" id="count-camera-digital">0</span></button>
       </div>
 
-      <!-- CAMERA BADGES / CARDS -->
       <div class="cameras-grid" id="camerasGrid">
 
-        <a href="#" class="tiny-camera-space" data-camera-type="film" data-camera-image="images/ektra.avif"
-          data-camera-name="Kodak Ektra 100" data-camera-description="16mm wide Film Camera">
-
+        <a href="#" class="tiny-camera-space" data-camera-type="film"
+          data-camera-image="images/ektra.avif"
+          data-camera-name="Kodak Ektra 100"
+          data-camera-description="16mm wide Film Camera">
           <div class="tiny-camera-thumb">
             <img src="images/ektra.avif" alt="Kodak Ektra 100">
           </div>
-
           <div class="tiny-camera-details">
             <span class="label">Previously Loaded · Film</span>
             <span class="model">Kodak Ektra 100</span>
             <img src="images/kodak.svg" alt="Kodak" class="tiny-camera-brand">
           </div>
-
         </a>
 
-        <a href="#" class="tiny-camera-space" data-camera-type="film" data-camera-image="images/cam.avif"
-          data-camera-name="Canon EOS 300" data-camera-description="35mm SLR Film Camera">
-
+        <a href="#" class="tiny-camera-space" data-camera-type="film"
+          data-camera-image="images/cam.avif"
+          data-camera-name="Canon EOS 300"
+          data-camera-description="35mm SLR Film Camera">
           <div class="tiny-camera-thumb">
             <img src="images/cam.avif" alt="Canon EOS 300">
           </div>
-
           <div class="tiny-camera-details">
             <span class="label">Currently Loaded · Film</span>
             <span class="model">Canon EOS 300</span>
             <img src="images/canon.svg" alt="Canon" class="tiny-camera-brand">
           </div>
-
         </a>
 
         <div class="cameras-empty mono" id="camerasEmpty">
@@ -1859,113 +651,27 @@
       </div>
 
     </div>
-
   </section>
 
 
   <!-- =====================================================
        CATALOGUE
+       Cards are injected here by admin-cards.js
        ===================================================== -->
 
   <section id="catalogue" class="catalogue">
-
     <div class="wrap">
 
-
       <div class="section-head hidden">
-
-        <h2>
-          Index of Entries
-        </h2>
-
-        <span class="mono">
-          A History Of My Capturing
-        </span>
-
+        <h2>Index of Entries</h2>
+        <span class="mono">A History Of My Capturing</span>
       </div>
 
-
-      <!-- CARDS -->
-
       <div class="grid" id="cardGrid">
-
-
-        <!-- =================================================
-             ROLL 01
-             ================================================= -->
-
-        <article class="card hidden" data-category="series">
-
-          <div class="card-top">
-
-            <span class="code">
-              ROLL&nbsp;—&nbsp;01
-            </span>
-
-            <span class="stamp-badge">
-              Series
-            </span>
-
-          </div>
-
-
-          <div class="thumb">
-
-            <img src="images/kodak-gold-200.avif" alt="Kodak Gold 200 film retail package" class="frame">
-
-            <span class="frame-num">
-              14A
-            </span>
-
-          </div>
-
-
-          <div class="perf"></div>
-
-
-          <h3>
-            Gold 200
-          </h3>
-
-
-          <div class="meta">
-
-            <span>
-              Location —
-              <span>Beirut, LB</span>
-            </span>
-
-            <span>
-              Year —
-              <span>2026</span>
-            </span>
-
-            <span>
-              Format —
-              <span>35mm Film</span>
-            </span>
-
-          </div>
-
-
-          <p class="desc">
-            Quiet Shelves Hiding a lot of treasures.
-          </p>
-
-
-          <a href="gallery.html?i=0" class="card-link">
-
-            View gallery →
-
-          </a>
-
-        </article>
-
-
+        <!-- admin-cards.js renders all rolls here -->
       </div>
 
     </div>
-
   </section>
 
 
@@ -1974,55 +680,22 @@
        ===================================================== -->
 
   <section id="about" class="about hidden">
-
     <div class="wrap about-inner">
-
-      <h2>
-        Behind the Lens
-      </h2>
-
-
+      <h2>Behind the Lens</h2>
       <p>
-
-        I shoot mostly on film, sometimes digital,
-        always chasing available light.
-        Every series in this catalogue was shot,
-        developed, and sequenced by hand —
+        I shoot mostly on film, sometimes digital, always chasing available light.
+        Every series in this catalogue was shot, developed, and sequenced by hand —
         sessions are built around the same eye.
-
       </p>
-
-
       <div class="tags">
-
-        <span class="tag">
-          35mm Film
-        </span>
-
-        <span class="tag">
-          Medium Format
-        </span>
-
-        <span class="tag">
-          Studio Lighting
-        </span>
-
-        <span class="tag">
-          Location Scouting
-        </span>
-
-        <span class="tag">
-          Darkroom Printing
-        </span>
-
-        <span class="tag">
-          Retouching
-        </span>
-
+        <span class="tag">35mm Film</span>
+        <span class="tag">Medium Format</span>
+        <span class="tag">Studio Lighting</span>
+        <span class="tag">Location Scouting</span>
+        <span class="tag">Darkroom Printing</span>
+        <span class="tag">Retouching</span>
       </div>
-
     </div>
-
   </section>
 
 
@@ -2031,91 +704,30 @@
        ===================================================== -->
 
   <section id="contact" class="contact hidden">
-
     <div class="wrap">
-
       <div class="order-form">
-
-        <h2>
-          Book a Session
-        </h2>
-
-
-        <p>
-
-          Have a date in mind?
-          Send a note and I'll get back to you
-          within a couple of days.
-
-        </p>
-
-
+        <h2>Book a Session</h2>
+        <p>Have a date in mind? Send a note and I'll get back to you within a couple of days.</p>
         <div class="contact-rows">
-
           <div>
-
-            <span>
-              Email
-            </span>
-
-            <span>
-              raffoultraboulsy@aol.com
-            </span>
-
+            <span>Email</span>
+            <span>raffoultraboulsy@aol.com</span>
           </div>
-
-
           <div>
-
-            <span>
-              Response time
-            </span>
-
-            <span>
-              1–2 business days
-            </span>
-
+            <span>Response time</span>
+            <span>1–2 business days</span>
           </div>
-
-
           <div>
-
-            <span>
-              Currently
-            </span>
-
-            <span>
-              Booking for Autumn 2026
-            </span>
-
+            <span>Currently</span>
+            <span>Booking for Autumn 2026</span>
           </div>
-
         </div>
-
-
         <div class="order-form-actions">
-
-          <a href="mailto:raffoultraboulsy@aol.com?subject=Booking%20Inquiry%3A%20Film%20Camera%20Shoot&body=Hello%2C%0A%0AI%20am%20reaching%20out%20to%20inquire%20about%20booking%20a%20film%20camera%20shoot.%20Please%20let%20me%20know%20your%20availability%20and%20rates.%0A%0AThank%20you!"
-            target="_blank" class="btn btn-solid">
-
-            Get In Touch
-
-          </a>
-
-
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=raffoultraboulsy@aol.com&su=Booking%20Inquiry:%20Film%20Camera%20Shoot&body=Hi%20Raffoul,%0D%0A%0D%0AI%20am%20reaching%20out%20to%20inquire%20about%20booking%20a%20film%20camera%20shoot.%20Please%20let%20me%20know%20your%20availability%20and%20rates.%0D%0A%0D%0AThank%20you!"
-            target="_blank" class="btn btn-solid">
-
-            Get In Touch (For Desktop)
-
-          </a>
-
+          <a href="mailto:raffoultraboulsy@aol.com?subject=Booking%20Inquiry%3A%20Film%20Camera%20Shoot&body=Hello%2C%0A%0AI%20am%20reaching%20out%20to%20inquire%20about%20booking%20a%20film%20camera%20shoot.%20Please%20let%20me%20know%20your%20availability%20and%20rates.%0A%0AThank%20you!" target="_blank" class="btn btn-solid">Get In Touch</a>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=raffoultraboulsy@aol.com&su=Booking%20Inquiry:%20Film%20Camera%20Shoot&body=Hi%20Raffoul,%0D%0A%0D%0AI%20am%20reaching%20out%20to%20inquire%20about%20booking%20a%20film%20camera%20shoot.%20Please%20let%20me%20know%20your%20availability%20and%20rates.%0D%0A%0D%0AThank%20you!" target="_blank" class="btn btn-solid">Get In Touch (For Desktop)</a>
         </div>
-
       </div>
-
     </div>
-
   </section>
 
 
@@ -2124,26 +736,10 @@
        ===================================================== -->
 
   <footer>
-
     <div class="wrap">
-
-      <p>
-
-        Prints, sessions, and availability are updated
-        periodically. Full galleries and pricing are
-        available on request.
-
-      </p>
-
-
-      <p class="end mono">
-
-        — End of Catalogue No. 001 —
-
-      </p>
-
+      <p>Prints, sessions, and availability are updated periodically. Full galleries and pricing are available on request.</p>
+      <p class="end mono">— End of Catalogue No. 001 —</p>
     </div>
-
   </footer>
 
 
@@ -2152,49 +748,16 @@
        ===================================================== -->
 
   <div id="camera-modal" class="camera-modal" aria-hidden="true">
-
     <div class="shutter shutter-top"></div>
-
     <div class="shutter shutter-bottom"></div>
-
-
     <div class="camera-modal-content">
-
-      <button class="close-modal mono" type="button" aria-label="Close camera">
-
-        Close [X]
-
-      </button>
-
-
+      <button class="close-modal mono" type="button" aria-label="Close camera">Close [X]</button>
       <img src="images/cam.avif" alt="Canon EOS 300 Enlarged">
-
-
       <div class="camera-modal-details mono">
-
-        <h3 style="
-            font-family: 'Archivo', sans-serif;
-            font-size: 1.5rem;
-            margin-bottom: .2rem;
-          ">
-
-          Canon EOS 300
-
-        </h3>
-
-
-        <p style="
-            color: var(--line);
-          ">
-
-          35mm SLR Film Camera
-
-        </p>
-
+        <h3 style="font-family:'Archivo',sans-serif;font-size:1.5rem;margin-bottom:.2rem;">Canon EOS 300</h3>
+        <p style="color:var(--line);">35mm SLR Film Camera</p>
       </div>
-
     </div>
-
   </div>
 
 
@@ -2202,12 +765,8 @@
        AUDIO
        ===================================================== -->
 
-  <audio id="shutter-audio" src="audio/shutter.mp3" preload="auto">
-  </audio>
-
-
-  <audio id="roll-audio" src="audio/film-roll.mp3" preload="auto">
-  </audio>
+  <audio id="shutter-audio" src="audio/shutter.mp3" preload="auto"></audio>
+  <audio id="roll-audio" src="audio/film-roll.mp3" preload="auto"></audio>
 
 
   <!-- =====================================================
@@ -2220,227 +779,53 @@
        SCROLL REVEAL
        ===================================================== */
 
-    const hiddenElements =
-      document.querySelectorAll('.hidden');
-
+    const hiddenElements = document.querySelectorAll('.hidden');
 
     if ('IntersectionObserver' in window) {
-
-      const observer =
-        new IntersectionObserver(
-          (entries, obs) => {
-
-            entries.forEach((entry) => {
-
-              if (entry.isIntersecting) {
-
-                entry.target.classList.add('show');
-
-                obs.unobserve(entry.target);
-
-              }
-
-            });
-
-          },
-          {
-            threshold: 0.12
-          }
-        );
-
-
-      hiddenElements.forEach((el) => {
-
-        observer.observe(el);
-
-      });
-
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) { entry.target.classList.add('show'); obs.unobserve(entry.target); }
+        });
+      }, { threshold: 0.12 });
+      hiddenElements.forEach((el) => observer.observe(el));
     } else {
-
-      hiddenElements.forEach((el) => {
-
-        el.classList.add('show');
-
-      });
-
+      hiddenElements.forEach((el) => el.classList.add('show'));
     }
-
-
-    /* =====================================================
-       CARDS / FILTERS
-       ===================================================== */
-
-    const cards =
-      Array.from(
-        document.querySelectorAll('.card')
-      );
-
-
-    const tabs =
-      Array.from(
-        document.querySelectorAll('.index-bar .tab')
-      );
-
-
-    function updateCounts() {
-
-      const allCount =
-        document.getElementById('count-all');
-
-      const seriesCount =
-        document.getElementById('count-series');
-
-      const sessionCount =
-        document.getElementById('count-session');
-
-
-      if (allCount) {
-
-        allCount.textContent =
-          cards.length;
-
-      }
-
-
-      if (seriesCount) {
-
-        seriesCount.textContent =
-          cards.filter(
-            card =>
-              card.dataset.category === 'series'
-          ).length;
-
-      }
-
-
-      if (sessionCount) {
-
-        sessionCount.textContent =
-          cards.filter(
-            card =>
-              card.dataset.category === 'session'
-          ).length;
-
-      }
-
-    }
-
-
-    updateCounts();
-
-
-    tabs.forEach((tab) => {
-
-      tab.addEventListener(
-        'click',
-        () => {
-
-          tabs.forEach((item) => {
-
-            item.classList.remove('active');
-
-          });
-
-
-          tab.classList.add('active');
-
-
-          const filter =
-            tab.dataset.filter;
-
-
-          cards.forEach((card) => {
-
-            const matches =
-              filter === 'all' ||
-              card.dataset.category === filter;
-
-
-            if (matches) {
-
-              card.style.display = '';
-
-              requestAnimationFrame(() => {
-
-                card.classList.add('show');
-
-              });
-
-            } else {
-
-              card.style.display = 'none';
-
-            }
-
-          });
-
-        }
-      );
-
-    });
 
 
     /* =====================================================
        CAMERA TABS & FILTERING
        ===================================================== */
 
-    const cameraTabs =
-      Array.from(
-        document.querySelectorAll('.camera-tab')
-      );
-
-    const cameraCards =
-      Array.from(
-        document.querySelectorAll('.tiny-camera-space')
-      );
+    const cameraTabs = Array.from(document.querySelectorAll('.camera-tab'));
+    const cameraCards = Array.from(document.querySelectorAll('.tiny-camera-space'));
 
     function updateCameraCounts() {
-      const allCameraCount = document.getElementById('count-camera-all');
-      const filmCameraCount = document.getElementById('count-camera-film');
+      const allCameraCount     = document.getElementById('count-camera-all');
+      const filmCameraCount    = document.getElementById('count-camera-film');
       const digitalCameraCount = document.getElementById('count-camera-digital');
-
-      const filmTotal = cameraCards.filter(c => (c.dataset.cameraType || 'film').toLowerCase() === 'film').length;
+      const filmTotal    = cameraCards.filter(c => (c.dataset.cameraType || 'film').toLowerCase() === 'film').length;
       const digitalTotal = cameraCards.filter(c => (c.dataset.cameraType || '').toLowerCase() === 'digital').length;
-
-      if (allCameraCount) allCameraCount.textContent = cameraCards.length;
-      if (filmCameraCount) filmCameraCount.textContent = filmTotal;
+      if (allCameraCount)     allCameraCount.textContent     = cameraCards.length;
+      if (filmCameraCount)    filmCameraCount.textContent    = filmTotal;
       if (digitalCameraCount) digitalCameraCount.textContent = digitalTotal;
     }
-
     updateCameraCounts();
 
     cameraTabs.forEach((tab) => {
       tab.addEventListener('click', () => {
-        cameraTabs.forEach((t) => {
-          t.classList.remove('active');
-          t.setAttribute('aria-selected', 'false');
-        });
-
-        tab.classList.add('active');
-        tab.setAttribute('aria-selected', 'true');
-
+        cameraTabs.forEach((t) => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+        tab.classList.add('active'); tab.setAttribute('aria-selected', 'true');
         const filter = tab.dataset.cameraFilter;
         let visibleCount = 0;
-
         cameraCards.forEach((cam) => {
           const camType = (cam.dataset.cameraType || 'film').toLowerCase();
           const matches = filter === 'all' || camType === filter;
-
-          if (matches) {
-            cam.style.display = '';
-            visibleCount++;
-            requestAnimationFrame(() => {
-              cam.classList.add('show');
-            });
-          } else {
-            cam.style.display = 'none';
-          }
+          if (matches) { cam.style.display = ''; visibleCount++; requestAnimationFrame(() => cam.classList.add('show')); }
+          else { cam.style.display = 'none'; }
         });
-
         const camerasEmpty = document.getElementById('camerasEmpty');
-        if (camerasEmpty) {
-          camerasEmpty.style.display = visibleCount === 0 ? 'block' : 'none';
-        }
+        if (camerasEmpty) camerasEmpty.style.display = visibleCount === 0 ? 'block' : 'none';
       });
     });
 
@@ -2449,180 +834,51 @@
        AUDIO + MODAL ELEMENTS
        ===================================================== */
 
-    const cameraBadges =
-      document.querySelectorAll(
-        '.tiny-camera-space'
-      );
-
-
-    const cameraModal =
-      document.getElementById(
-        'camera-modal'
-      );
-
-
-    const closeModalBtn =
-      document.querySelector(
-        '.close-modal'
-      );
-
-
-    const cameraModalImage =
-      document.querySelector(
-        '.camera-modal-content img'
-      );
-
-
-    const cameraModalName =
-      document.querySelector(
-        '.camera-modal-details h3'
-      );
-
-
-    const cameraModalDescription =
-      document.querySelector(
-        '.camera-modal-details p'
-      );
-
-
-    const shutterAudio =
-      document.getElementById(
-        'shutter-audio'
-      );
-
-
-    const rollAudio =
-      document.getElementById(
-        'roll-audio'
-      );
-
-
-    const cardGrid =
-      document.getElementById(
-        'cardGrid'
-      );
-
-
-    const backLink =
-      document.querySelector(
-        '.masthead-back-link'
-      );
-
-
-    const soundToggle =
-      document.getElementById(
-        'sound-toggle'
-      );
+    const cameraBadges        = document.querySelectorAll('.tiny-camera-space');
+    const cameraModal         = document.getElementById('camera-modal');
+    const closeModalBtn       = document.querySelector('.close-modal');
+    const cameraModalImage    = document.querySelector('.camera-modal-content img');
+    const cameraModalName     = document.querySelector('.camera-modal-details h3');
+    const cameraModalDesc     = document.querySelector('.camera-modal-details p');
+    const shutterAudio        = document.getElementById('shutter-audio');
+    const rollAudio           = document.getElementById('roll-audio');
+    const cardGrid            = document.getElementById('cardGrid');
+    const backLink            = document.querySelector('.masthead-back-link');
+    const soundToggle         = document.getElementById('sound-toggle');
 
 
     /* =====================================================
        SOUND EFFECT SYSTEM
        ===================================================== */
 
-    let soundEnabled =
-      localStorage.getItem('sfxEnabled') !== 'false';
-
+    let soundEnabled = localStorage.getItem('sfxEnabled') !== 'false';
 
     function updateSoundButton() {
-
-      if (!soundToggle) {
-        return;
-      }
-
-
+      if (!soundToggle) return;
       if (soundEnabled) {
-
-        soundToggle.textContent =
-          '🔊 SFX ON';
-
-        soundToggle.classList.remove(
-          'muted'
-        );
-
-        soundToggle.setAttribute(
-          'aria-label',
-          'Mute sound effects'
-        );
-
-        soundToggle.setAttribute(
-          'aria-pressed',
-          'false'
-        );
-
+        soundToggle.textContent = '🔊 SFX ON';
+        soundToggle.classList.remove('muted');
+        soundToggle.setAttribute('aria-label', 'Mute sound effects');
+        soundToggle.setAttribute('aria-pressed', 'false');
       } else {
-
-        soundToggle.textContent =
-          '🔇 SFX OFF';
-
-        soundToggle.classList.add(
-          'muted'
-        );
-
-        soundToggle.setAttribute(
-          'aria-label',
-          'Enable sound effects'
-        );
-
-        soundToggle.setAttribute(
-          'aria-pressed',
-          'true'
-        );
-
+        soundToggle.textContent = '🔇 SFX OFF';
+        soundToggle.classList.add('muted');
+        soundToggle.setAttribute('aria-label', 'Enable sound effects');
+        soundToggle.setAttribute('aria-pressed', 'true');
       }
-
     }
-
-
     updateSoundButton();
 
-
-    /* =====================================================
-       TOGGLE SOUND
-       ===================================================== */
-
     if (soundToggle) {
-
-      soundToggle.addEventListener(
-        'click',
-        () => {
-
-          soundEnabled =
-            !soundEnabled;
-
-
-          localStorage.setItem(
-            'sfxEnabled',
-            String(soundEnabled)
-          );
-
-
-          if (!soundEnabled) {
-
-            if (shutterAudio) {
-
-              shutterAudio.pause();
-
-              shutterAudio.currentTime = 0;
-
-            }
-
-
-            if (rollAudio) {
-
-              rollAudio.pause();
-
-              rollAudio.currentTime = 0;
-
-            }
-
-          }
-
-
-          updateSoundButton();
-
+      soundToggle.addEventListener('click', () => {
+        soundEnabled = !soundEnabled;
+        localStorage.setItem('sfxEnabled', String(soundEnabled));
+        if (!soundEnabled) {
+          if (shutterAudio) { shutterAudio.pause(); shutterAudio.currentTime = 0; }
+          if (rollAudio)    { rollAudio.pause();    rollAudio.currentTime = 0; }
         }
-      );
-
+        updateSoundButton();
+      });
     }
 
 
@@ -2632,25 +888,15 @@
 
     function stopAllSounds() {
       [shutterAudio, rollAudio].forEach((audio) => {
-        if (!audio) return;
-        audio.pause();
-        audio.currentTime = 0;
+        if (!audio) return; audio.pause(); audio.currentTime = 0;
       });
     }
 
-
     function playSound(audio) {
-      if (!soundEnabled || !audio) {
-        return;
-      }
-
+      if (!soundEnabled || !audio) return;
       audio.currentTime = 0;
-
-      const playPromise = audio.play();
-
-      if (playPromise !== undefined) {
-        playPromise.catch(() => { });
-      }
+      const p = audio.play();
+      if (p !== undefined) p.catch(() => {});
     }
 
 
@@ -2658,33 +904,14 @@
        FLASH
        ===================================================== */
 
-    const flash =
-      document.createElement('div');
-
-
-    flash.className =
-      'flash-overlay';
-
-
-    document.body.appendChild(
-      flash
-    );
-
+    const flash = document.createElement('div');
+    flash.className = 'flash-overlay';
+    document.body.appendChild(flash);
 
     function triggerFlash() {
-
-      flash.classList.remove(
-        'flash-active'
-      );
-
-
+      flash.classList.remove('flash-active');
       void flash.offsetWidth;
-
-
-      flash.classList.add(
-        'flash-active'
-      );
-
+      flash.classList.add('flash-active');
     }
 
 
@@ -2693,67 +920,21 @@
        ===================================================== */
 
     cameraBadges.forEach((cameraBadge) => {
-
-      cameraBadge.addEventListener(
-        'click',
-        (e) => {
-
-          e.preventDefault();
-
-          const cameraImage =
-            cameraBadge.dataset.cameraImage;
-
-          const cameraName =
-            cameraBadge.dataset.cameraName;
-
-          const cameraDescription =
-            cameraBadge.dataset.cameraDescription;
-
-          if (cameraModalImage && cameraImage) {
-            cameraModalImage.src = cameraImage;
-            cameraModalImage.alt =
-              `${cameraName || 'Camera'} Enlarged`;
-          }
-
-          if (cameraModalName && cameraName) {
-            cameraModalName.textContent = cameraName;
-          }
-
-          if (cameraModalDescription && cameraDescription) {
-            cameraModalDescription.textContent = cameraDescription;
-          }
-
-          cameraModal.classList.remove(
-            'shutter-only'
-          );
-
-          cameraModal.classList.add(
-            'active'
-          );
-
-          cameraModal.setAttribute(
-            'aria-hidden',
-            'false'
-          );
-
-          setTimeout(() => {
-            triggerFlash();
-
-            // Always check the current SFX state at playback time.
-            playSound(shutterAudio);
-          }, 350);
-
-          setTimeout(() => {
-            flash.classList.remove(
-              'flash-active'
-            );
-          }, 1100);
-
-        }
-      );
-
+      cameraBadge.addEventListener('click', (e) => {
+        e.preventDefault();
+        const cameraImage       = cameraBadge.dataset.cameraImage;
+        const cameraName        = cameraBadge.dataset.cameraName;
+        const cameraDescription = cameraBadge.dataset.cameraDescription;
+        if (cameraModalImage && cameraImage) { cameraModalImage.src = cameraImage; cameraModalImage.alt = `${cameraName || 'Camera'} Enlarged`; }
+        if (cameraModalName && cameraName)   cameraModalName.textContent = cameraName;
+        if (cameraModalDesc && cameraDescription) cameraModalDesc.textContent = cameraDescription;
+        cameraModal.classList.remove('shutter-only');
+        cameraModal.classList.add('active');
+        cameraModal.setAttribute('aria-hidden', 'false');
+        setTimeout(() => { triggerFlash(); playSound(shutterAudio); }, 350);
+        setTimeout(() => { flash.classList.remove('flash-active'); }, 1100);
+      });
     });
-
 
 
     /* =====================================================
@@ -2761,80 +942,20 @@
        ===================================================== */
 
     if (cardGrid) {
-
-      cardGrid.addEventListener(
-        'click',
-        (e) => {
-
-          const link =
-            e.target.closest(
-              '.card-link'
-            );
-
-
-          if (!link) {
-            return;
-          }
-
-
-          if (
-            e.ctrlKey ||
-            e.metaKey ||
-            e.shiftKey ||
-            e.button !== 0
-          ) {
-
-            return;
-
-          }
-
-
-          e.preventDefault();
-
-
-          const targetUrl =
-            link.href;
-
-
-          cameraModal.classList.add(
-            'shutter-only'
-          );
-
-
-          cameraModal.classList.add(
-            'active'
-          );
-
-
-          cameraModal.setAttribute(
-            'aria-hidden',
-            'false'
-          );
-
-
-          setTimeout(() => {
-
-            triggerFlash();
-
-
-            playSound(
-              shutterAudio
-            );
-
-
-            setTimeout(() => {
-
-              stopAllSounds();
-              window.location.href =
-                targetUrl;
-
-            }, 150);
-
-          }, 350);
-
-        }
-      );
-
+      cardGrid.addEventListener('click', (e) => {
+        const link = e.target.closest('.card-link');
+        if (!link) return;
+        if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return;
+        e.preventDefault();
+        const targetUrl = link.href;
+        cameraModal.classList.add('shutter-only', 'active');
+        cameraModal.setAttribute('aria-hidden', 'false');
+        setTimeout(() => {
+          triggerFlash();
+          playSound(shutterAudio);
+          setTimeout(() => { stopAllSounds(); window.location.href = targetUrl; }, 150);
+        }, 350);
+      });
     }
 
 
@@ -2843,51 +964,12 @@
        ===================================================== */
 
     if (backLink) {
-
-      backLink.addEventListener(
-        'click',
-        (e) => {
-
-          if (
-            e.ctrlKey ||
-            e.metaKey ||
-            e.shiftKey ||
-            e.button !== 0
-          ) {
-
-            return;
-
-          }
-
-
-          e.preventDefault();
-
-
-          const targetUrl =
-            backLink.href;
-
-
-          playSound(
-            rollAudio
-          );
-
-
-          const delay =
-            soundEnabled
-              ? 700
-              : 0;
-
-
-          setTimeout(() => {
-
-            window.location.href =
-              targetUrl;
-
-          }, delay);
-
-        }
-      );
-
+      backLink.addEventListener('click', (e) => {
+        if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return;
+        e.preventDefault();
+        playSound(rollAudio);
+        setTimeout(() => { window.location.href = backLink.href; }, soundEnabled ? 700 : 0);
+      });
     }
 
 
@@ -2896,133 +978,50 @@
        ===================================================== */
 
     function closeCameraModal() {
-
-      cameraModal.classList.remove(
-        'active'
-      );
-
-
-      cameraModal.setAttribute(
-        'aria-hidden',
-        'true'
-      );
-
-
-      setTimeout(() => {
-
-        cameraModal.classList.remove(
-          'shutter-only'
-        );
-
-      }, 400);
-
+      cameraModal.classList.remove('active');
+      cameraModal.setAttribute('aria-hidden', 'true');
+      setTimeout(() => { cameraModal.classList.remove('shutter-only'); }, 400);
     }
+    if (closeModalBtn) closeModalBtn.addEventListener('click', closeCameraModal);
 
-
-    if (closeModalBtn) {
-
-      closeModalBtn.addEventListener(
-        'click',
-        closeCameraModal
-      );
-
-    }
-
-
-    /* =====================================================
-       ESCAPE KEY
-       ===================================================== */
-
-    document.addEventListener(
-      'keydown',
-      (e) => {
-
-        if (
-          e.key === 'Escape' &&
-          cameraModal.classList.contains('active')
-        ) {
-
-          closeCameraModal();
-
-        }
-
-      }
-    );
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && cameraModal.classList.contains('active')) closeCameraModal();
+    });
 
 
     /* =====================================================
        BROWSER BACK / BF CACHE
        ===================================================== */
 
-    window.addEventListener(
-      'pageshow',
-      (e) => {
-
-        stopAllSounds();
-
-        if (e.persisted) {
-
-          cameraModal.classList.remove(
-            'active',
-            'shutter-only'
-          );
-
-
-          cameraModal.setAttribute(
-            'aria-hidden',
-            'true'
-          );
-
-
-          flash.classList.remove(
-            'flash-active'
-          );
-
-        }
-
+    window.addEventListener('pageshow', (e) => {
+      stopAllSounds();
+      if (e.persisted) {
+        cameraModal.classList.remove('active', 'shutter-only');
+        cameraModal.setAttribute('aria-hidden', 'true');
+        flash.classList.remove('flash-active');
       }
-    );
+    });
 
 
     /* =====================================================
        PAGE LOAD SHUTTER
        ===================================================== */
 
-    window.addEventListener(
-      'load',
-      () => {
-
-        const loadShutter =
-          document.getElementById(
-            'page-load-shutter'
-          );
-
-
-        if (!loadShutter) {
-          return;
-        }
-
-
-        setTimeout(() => {
-
-          loadShutter.classList.add(
-            'open'
-          );
-
-        }, 300);
-
-      }
-    );
+    window.addEventListener('load', () => {
+      const loadShutter = document.getElementById('page-load-shutter');
+      if (!loadShutter) return;
+      setTimeout(() => { loadShutter.classList.add('open'); }, 300);
+    });
 
   </script>
 
 
   <!-- =====================================================
-       ADMIN CARDS
+       ADMIN CARDS — renders all rolls into #cardGrid
        ===================================================== -->
 
   <script src="admin-cards.js"></script>
 
-</body>
 
+</body>
 </html>
