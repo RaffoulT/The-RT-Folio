@@ -533,15 +533,15 @@
     .camera-modal.active:not(.shutter-only):not(.closing) .iris-blades { transform: rotate(0deg); }
     .camera-modal.closing .iris-opening { transform: scale(.01) rotate(-30deg); }
     .camera-modal.closing .iris-blades { transform: rotate(-30deg); }
-    .camera-modal.shutter-only.active .iris-opening { animation: iris-capture .7s cubic-bezier(.65,0,.35,1) both; }
-    .camera-modal.shutter-only.active .iris-blades { animation: iris-blade-rotation .7s cubic-bezier(.65,0,.35,1) both; }
-    @keyframes iris-capture {
-      0%, 100% { transform: scale(.01) rotate(-30deg); }
-      48% { transform: scale(6) rotate(0deg); }
+    .camera-modal.shutter-only.active .iris-opening { animation: iris-close .45s cubic-bezier(.65,0,.35,1) both; }
+    .camera-modal.shutter-only.active .iris-blades { animation: iris-blade-close .45s cubic-bezier(.65,0,.35,1) both; }
+    @keyframes iris-close {
+      from { transform: scale(6) rotate(0deg); }
+      to { transform: scale(.01) rotate(-30deg); }
     }
-    @keyframes iris-blade-rotation {
-      0%, 100% { transform: rotate(-30deg); }
-      48% { transform: rotate(0deg); }
+    @keyframes iris-blade-close {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(-30deg); }
     }
     .camera-modal-content { position: relative; z-index: 102; opacity: 0; transform: scale(.95); transition: opacity .3s ease .4s, transform .3s ease .4s; text-align: center; color: var(--paper); }
     .camera-modal.active:not(.shutter-only):not(.closing) .camera-modal-content { opacity: 1; transform: scale(1); }
@@ -1112,7 +1112,14 @@
         if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return;
         e.preventDefault();
         const targetUrl = link.href;
-        window.location.href = targetUrl;
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        cameraModal.classList.add('shutter-only', 'active');
+        cameraModal.setAttribute('aria-hidden', 'false');
+        playSound(shutterAudio);
+        setTimeout(() => {
+          stopAllSounds();
+          window.location.href = targetUrl;
+        }, reducedMotion ? 0 : 450);
       });
     }
 
