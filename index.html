@@ -688,6 +688,23 @@
       line-height: 1;
     }
 
+    .tiny-camera-brand {
+      display: block;
+      margin-top: .35rem;
+      height: 10px;
+      width: auto;
+      max-width: 52px;
+      opacity: 0.55;
+      filter: brightness(0) invert(1);
+      object-fit: contain;
+      object-position: left center;
+      transition: opacity 0.2s ease;
+    }
+
+    .tiny-camera-space:hover .tiny-camera-brand {
+      opacity: 0.85;
+    }
+
 
     /* =====================================================
        CATALOGUE
@@ -1824,6 +1841,7 @@
           <div class="tiny-camera-details">
             <span class="label">Previously Loaded · Film</span>
             <span class="model">Kodak Ektra 100</span>
+            <img src="images/kodak.svg" alt="Kodak" class="tiny-camera-brand">
           </div>
 
         </a>
@@ -1838,6 +1856,7 @@
           <div class="tiny-camera-details">
             <span class="label">Currently Loaded · Film</span>
             <span class="model">Canon EOS 300</span>
+            <img src="images/canon.svg" alt="Canon" class="tiny-camera-brand">
           </div>
 
         </a>
