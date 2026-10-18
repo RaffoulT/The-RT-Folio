@@ -1,4 +1,4 @@
-# rt.captured.on.film
+# THE RT Folio
 
 A static photography portfolio/catalogue website — "Raffoul Traboulsy — Photography Catalogue." Built with plain HTML, CSS, and vanilla JavaScript (no build tools or frameworks required).
 
