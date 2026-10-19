@@ -533,8 +533,8 @@
     .camera-modal.active:not(.shutter-only):not(.closing) .iris-blades { transform: rotate(0deg); }
     .camera-modal.closing .iris-opening { transform: scale(.01) rotate(-30deg); }
     .camera-modal.closing .iris-blades { transform: rotate(-30deg); }
-    .camera-modal.shutter-only.active .iris-opening { animation: iris-close .45s cubic-bezier(.65,0,.35,1) both; }
-    .camera-modal.shutter-only.active .iris-blades { animation: iris-blade-close .45s cubic-bezier(.65,0,.35,1) both; }
+    .camera-modal.shutter-only.active .iris-opening { animation: iris-close .6s cubic-bezier(.4,0,.2,1) both; }
+    .camera-modal.shutter-only.active .iris-blades { animation: iris-blade-close .6s cubic-bezier(.4,0,.2,1) both; }
     @keyframes iris-close {
       from { transform: scale(6) rotate(0deg); }
       to { transform: scale(.01) rotate(-30deg); }
@@ -975,6 +975,7 @@
     const shutterAudio        = document.getElementById('shutter-audio');
     const rollAudio           = document.getElementById('roll-audio');
     const cardGrid            = document.getElementById('cardGrid');
+    const irisOpening          = cameraModal.querySelector('.iris-opening');
     const backLink            = document.querySelector('.masthead-back-link');
     const soundToggle         = document.getElementById('sound-toggle');
     const welcomeInterstitial = document.getElementById('welcome-interstitial');
@@ -1106,6 +1107,20 @@
        ===================================================== */
 
     if (cardGrid) {
+      let pendingCardNavigation = null;
+      let navigationFallback;
+      const finishCardNavigation = () => {
+        if (!pendingCardNavigation) return;
+        const targetUrl = pendingCardNavigation;
+        pendingCardNavigation = null;
+        window.clearTimeout(navigationFallback);
+        stopAllSounds();
+        window.location.href = targetUrl;
+      };
+      irisOpening?.addEventListener('animationend', (e) => {
+        if (e.animationName === 'iris-close') finishCardNavigation();
+      });
+
       cardGrid.addEventListener('click', (e) => {
         const link = e.target.closest('.card-link');
         if (!link) return;
@@ -1113,13 +1128,16 @@
         e.preventDefault();
         const targetUrl = link.href;
         const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reducedMotion) {
+          stopAllSounds();
+          window.location.href = targetUrl;
+          return;
+        }
+        pendingCardNavigation = targetUrl;
+        navigationFallback = window.setTimeout(finishCardNavigation, 700);
         cameraModal.classList.add('shutter-only', 'active');
         cameraModal.setAttribute('aria-hidden', 'false');
         playSound(shutterAudio);
-        setTimeout(() => {
-          stopAllSounds();
-          window.location.href = targetUrl;
-        }, reducedMotion ? 0 : 450);
       });
     }
 
