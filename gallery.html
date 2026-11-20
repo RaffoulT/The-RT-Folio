@@ -69,6 +69,17 @@
       line-height: 1.55;
     }
 
+    .scroll-progress {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 1000;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left center;
+      pointer-events: none;
+    }
+
     a {
       color: inherit;
     }
@@ -114,6 +125,15 @@
       letter-spacing: .1em;
 
       text-transform: uppercase;
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      transition: padding .25s ease, background .25s ease, box-shadow .25s ease;
+    }
+    .gallery-nav.is-scrolled {
+      padding: .65rem 0;
+      background: rgba(20,19,18,.96);
+      box-shadow: 0 10px 30px rgba(0,0,0,.22);
     }
 
     .nav-flex {
@@ -228,6 +248,10 @@
 
     .film-frame:hover {
       border-color: var(--gold);
+    }
+    .film-frame.is-tilting {
+      transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+      transition: transform .12s ease-out, border-color .3s ease, box-shadow .3s ease;
     }
 
 
@@ -718,6 +742,7 @@
 </head>
 
 <body>
+  <div class="scroll-progress" aria-hidden="true"></div>
 
   <!-- =====================================================
        NAVIGATION
@@ -917,6 +942,47 @@
     (() => {
 
       'use strict';
+
+      const scrollProgress = document.querySelector('.scroll-progress');
+      const galleryNav = document.querySelector('.gallery-nav');
+      let scrollFrame;
+
+      function updateScrollMotion() {
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+        if (scrollProgress) scrollProgress.style.transform = `scaleX(${Math.min(1, Math.max(0, progress))})`;
+        if (galleryNav) galleryNav.classList.toggle('is-scrolled', window.scrollY > 24);
+        scrollFrame = null;
+      }
+
+      window.addEventListener('scroll', () => {
+        if (!scrollFrame) scrollFrame = requestAnimationFrame(updateScrollMotion);
+      }, { passive: true });
+      updateScrollMotion();
+
+      function enableFrameMotion() {
+        document.querySelectorAll('.film-frame').forEach((frame) => {
+          if (frame.dataset.motionReady) return;
+          frame.dataset.motionReady = 'true';
+          frame.addEventListener('pointermove', (event) => {
+            if (!window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+            const rect = frame.getBoundingClientRect();
+            const x = (event.clientX - rect.left) / rect.width - .5;
+            const y = (event.clientY - rect.top) / rect.height - .5;
+            frame.classList.add('is-tilting');
+            frame.style.setProperty('--tilt-x', `${(-y * 2.5).toFixed(2)}deg`);
+            frame.style.setProperty('--tilt-y', `${(x * 3).toFixed(2)}deg`);
+          });
+          frame.addEventListener('pointerleave', () => {
+            frame.classList.remove('is-tilting');
+            frame.style.removeProperty('--tilt-x');
+            frame.style.removeProperty('--tilt-y');
+          });
+        });
+      }
+
+      new MutationObserver(enableFrameMotion).observe(document.body, { childList: true, subtree: true });
+      enableFrameMotion();
 
 
       /* =====================================================

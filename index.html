@@ -57,6 +57,17 @@
       line-height: 1.55;
     }
 
+    .scroll-progress {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 1000;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left center;
+      pointer-events: none;
+    }
+
     a { color: inherit; }
     button { font: inherit; }
     ::selection { background: var(--gold); color: #141312; }
@@ -91,6 +102,12 @@
       padding: .9rem 0;
       background: rgba(20,19,18,0.85);
       backdrop-filter: blur(10px);
+      transition: padding .25s ease, background .25s ease, box-shadow .25s ease;
+    }
+    .masthead.is-scrolled {
+      padding: .55rem 0;
+      background: rgba(20,19,18,.96);
+      box-shadow: 0 10px 30px rgba(0,0,0,.22);
     }
     .masthead-row {
       display: grid;
@@ -346,6 +363,10 @@
       border-color: var(--gold);
       transition-delay: 0s;
     }
+    .card.is-tilting {
+      transform: translateY(-6px) perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+      transition: transform .12s ease-out, box-shadow .3s ease, border-color .3s ease;
+    }
     @media (prefers-reduced-motion: no-preference) {
       .card { transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
     }
@@ -586,6 +607,7 @@
 
 
 <body>
+  <div class="scroll-progress" aria-hidden="true"></div>
 
   <div id="welcome-interstitial" class="welcome-screen" role="dialog" aria-modal="true" aria-labelledby="welcome-title">
     <p class="welcome-kicker">The RT Folio · Photo Archive</p>
@@ -909,6 +931,50 @@
           document.documentElement.style.setProperty('--pointer-y', `${event.clientY}px`);
         });
       }, { passive: true });
+    }
+
+    const scrollProgress = document.querySelector('.scroll-progress');
+    const masthead = document.querySelector('.masthead');
+    let scrollFrame;
+
+    function updateScrollMotion() {
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+      if (scrollProgress) scrollProgress.style.transform = `scaleX(${Math.min(1, Math.max(0, progress))})`;
+      if (masthead) masthead.classList.toggle('is-scrolled', window.scrollY > 24);
+      scrollFrame = null;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!scrollFrame) scrollFrame = requestAnimationFrame(updateScrollMotion);
+    }, { passive: true });
+    updateScrollMotion();
+
+    function enableCardMotion(root) {
+      root.querySelectorAll('.card').forEach((card) => {
+        if (card.dataset.motionReady) return;
+        card.dataset.motionReady = 'true';
+        card.addEventListener('pointermove', (event) => {
+          if (!window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+          const rect = card.getBoundingClientRect();
+          const x = (event.clientX - rect.left) / rect.width - .5;
+          const y = (event.clientY - rect.top) / rect.height - .5;
+          card.classList.add('is-tilting');
+          card.style.setProperty('--tilt-x', `${(-y * 4).toFixed(2)}deg`);
+          card.style.setProperty('--tilt-y', `${(x * 5).toFixed(2)}deg`);
+        });
+        card.addEventListener('pointerleave', () => {
+          card.classList.remove('is-tilting');
+          card.style.removeProperty('--tilt-x');
+          card.style.removeProperty('--tilt-y');
+        });
+      });
+    }
+
+    const motionCardGrid = document.getElementById('cardGrid');
+    if (motionCardGrid) {
+      enableCardMotion(motionCardGrid);
+      new MutationObserver(() => enableCardMotion(motionCardGrid)).observe(motionCardGrid, { childList: true });
     }
 
     const hiddenElements = document.querySelectorAll('.hidden');
